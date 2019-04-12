@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Utensils controller
 class UtensilsController < ApplicationController
   def index
     @utensils = Utensil.all
@@ -38,7 +41,7 @@ class UtensilsController < ApplicationController
   def destroy
     @utensil = Utensil.find(params[:id])
     @utensil.destroy
-    
+
     redirect_to utensils_path
   end
 
