@@ -1,7 +1,7 @@
 <%= form_with model: @ingredient, local: true do |form| %>
   <p>
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true %>
   </p>
 
   <p>
