@@ -1,0 +1,26 @@
+<h1>Listing Recipes</h1>
+
+<table>
+  <tr>
+    <th>Source</th>
+    <th>Location</th>
+    <th>Total Minutes</th>
+    <th colspan='3'></th>
+  </tr>
+
+  <% @recipes.each do |recipe| %>
+    <tr>
+      <td><%= recipe.source %></td>
+      <td><%= recipe.location %></td>
+      <td><%= recipe.total_minutes %></td>
+      <td><%= link_to 'Show', recipe_path(recipe) %></td>
+      <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+      <td><%= link_to 'Destroy', recipe_path(recipe),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New recipe', new_recipe_path %> |
+<%= link_to 'Main Menu', welcome_index_path %>
