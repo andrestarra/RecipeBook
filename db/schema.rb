@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_142844) do
 
   create_table "steps", force: :cascade do |t|
     t.string "operation"
-    t.time "schedule_time"
+    t.float "expected_minutes"
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
