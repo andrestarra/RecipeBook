@@ -1,0 +1,25 @@
+<%= form_with model: @utensil, local: true do |form| %>
+  <% if @utensil.errors.any? %>
+    <div id='error_explanation'>
+      <h2>
+        <%= pluralize(@utensil.errors.count, 'error') %>
+      prohibited
+        this utensil from being saved:
+      </h2>
+      <ul>
+        <% @utensil.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li> 
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
