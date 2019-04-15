@@ -1,0 +1,35 @@
+<%= form_with model: @recipe, local: true do |form| %>
+  <% if @recipe.errors.any? %>
+    <div id='error_explanation'>
+      <h2>
+        <%= pluralize(@recipe.errors.count, 'error') %>
+      prohibited
+        this recipe from being saved:
+      </h2>
+      <ul>
+        <% @recipe.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li> 
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :source %>
+    <%= form.text_field :source, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :location %>
+    <%= form.text_field :location, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :total_minutes %>
+    <%= form.number_field :total_minutes, step: :any, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
