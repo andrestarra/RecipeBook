@@ -1,8 +1,14 @@
-<h1><%= @ingredient.name %></h1>
+<h1>Ingredient</h1>
+
+<div>
+  <strong>Name:</strong>
+  <%= @ingredient.name %>
+</div>
 
 <div>
   <strong>Calories:</strong>
   <%= @ingredient.calories %>
 </div>
 
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %>
 <%= link_to 'Back', ingredients_path %>
