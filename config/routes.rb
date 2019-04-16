@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
   
+  resources :plates
   resources :recipes
   resources :steps
   resources :ingredients
