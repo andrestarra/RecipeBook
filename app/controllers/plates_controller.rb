@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Plates Controller
 class PlatesController < ApplicationController
   def index
     @plates = Plate.all

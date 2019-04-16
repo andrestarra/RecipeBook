@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Recipes Controller
 class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
