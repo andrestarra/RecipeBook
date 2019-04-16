@@ -4,6 +4,7 @@ class CreateSteps < ActiveRecord::Migration[5.2]
       t.string :operation
       t.float :expected_minutes
       t.string :comment
+      t.references :recipe, foreign_key: true
 
       t.timestamps
     end

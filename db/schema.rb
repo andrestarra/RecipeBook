@@ -35,24 +35,30 @@ ActiveRecord::Schema.define(version: 2019_04_16_212816) do
     t.string "type_plate"
     t.float "price"
     t.string "comment"
+    t.bigint "menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_plates_on_menu_id"
   end
 
   create_table "recipes", force: :cascade do |t|
     t.string "source"
     t.string "location"
     t.float "total_minutes"
+    t.bigint "plate_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["plate_id"], name: "index_recipes_on_plate_id"
   end
 
   create_table "steps", force: :cascade do |t|
     t.string "operation"
     t.float "expected_minutes"
     t.string "comment"
+    t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_steps_on_recipe_id"
   end
 
   create_table "uses", force: :cascade do |t|
@@ -81,6 +87,9 @@ ActiveRecord::Schema.define(version: 2019_04_16_212816) do
     t.index ["utensil_id"], name: "index_utilities_on_utensil_id"
   end
 
+  add_foreign_key "plates", "menus"
+  add_foreign_key "recipes", "plates"
+  add_foreign_key "steps", "recipes"
   add_foreign_key "uses", "ingredients"
   add_foreign_key "uses", "steps"
   add_foreign_key "utilities", "steps"

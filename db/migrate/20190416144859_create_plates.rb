@@ -6,6 +6,7 @@ class CreatePlates < ActiveRecord::Migration[5.2]
       t.string :type_plate
       t.float :price
       t.string :comment
+      t.references :menu, foreign_key: true
 
       t.timestamps
     end
