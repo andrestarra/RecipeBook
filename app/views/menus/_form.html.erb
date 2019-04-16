@@ -1,0 +1,30 @@
+<%= form_with model: @menu, local: true do |form| %>
+  <% if @menu.errors.any? %>
+    <div id='error_explanation'>
+      <h2>
+        <%= pluralize(@menu.errors.count, 'error') %>
+      prohibited
+        this menu from being saved:
+      </h2>
+      <ul>
+        <% @menu.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li> 
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :type_of_menu %>
+    <%= form.text_field :type_menu, required: true %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
