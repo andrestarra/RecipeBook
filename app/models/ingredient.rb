@@ -2,6 +2,8 @@
 
 # Ingredient model
 class Ingredient < ApplicationRecord
+  has_many :uses
+
   validates :name, presence: true, length: { in: 3..20 }
   validates :calories, length: { maximum: 5 }
 end
