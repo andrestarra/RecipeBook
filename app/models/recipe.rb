@@ -2,7 +2,7 @@
 
 # Recipe Model
 class Recipe < ApplicationRecord
-  has_many :steps
+  has_many :steps, dependent: :destroy
   belongs_to :plate
   
   validates :source, :location, presence: true, length: { in: 3..25 }

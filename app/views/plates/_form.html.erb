@@ -40,6 +40,12 @@
   </div>
 
   <div>
+    <%= form.label :menu %>
+    <%= form.collection_select(:menu_id, Menu.all, :id, :menu_and_type,
+                              { prompt: true }) %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

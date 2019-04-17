@@ -30,6 +30,12 @@
   </div>
 
   <div>
+    <%= form.label :plate %>
+    <%= form.collection_select(:plate_id, Plate.all, :id, :name,
+                              { prompt: true }) %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

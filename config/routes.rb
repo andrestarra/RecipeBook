@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   
   resources :menus
   resources :plates
-  resources :recipes
-  resources :steps
+  resources :recipes do
+    resources :steps
+  end
   resources :ingredients
   resources :utensils
 

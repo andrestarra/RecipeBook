@@ -2,8 +2,8 @@
 
 # Step model
 class Step < ApplicationRecord
-  has_many :uses
-  has_many :utilities
+  has_many :uses, dependent: :destroy
+  has_many :utilities, dependent: :destroy
   belongs_to :recipe
 
   validates :operation, presence: true, length: { minimum: 3 }
