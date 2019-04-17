@@ -1,0 +1,8 @@
+<tr>
+  <td><%= step.operation %></td>
+  <td><%= step.expected_minutes %></td>
+  <td><%= step.comment %></td>
+  <td><%= link_to 'Destroy Step', [step.recipe, step],
+            method: :delete,
+            data: { confirm: 'Are you sure' } %></td>
+</tr>

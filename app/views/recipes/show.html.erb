@@ -1,6 +1,11 @@
 <h1>Recipe</h1>
 
 <div>
+  <strong>Plate:</strong>
+  <%= @recipe.plate.name %>
+</div>
+
+<div>
   <strong>Source:</strong>
   <%= @recipe.source %>
 </div>
@@ -15,4 +20,24 @@
   <%= @recipe.total_minutes %>
 </div>
 
+<div>
+  <h2>Steps</h2>
+  <table>
+    <tr>
+      <th>Operation</th>
+      <th>Expected Minutes</th>
+      <th>Comment</th>
+      <th colspan='1'></th>
+    </tr>
+    
+    <%= render @recipe.steps %>
+  </table>
+</div>
+
+<div>
+  <h2>Add a Step:</h2>
+  <%= render 'steps/form' %>
+</div>
+
+<%= link_to 'Edit', edit_recipe_path(@recipe) %>
 <%= link_to 'Back', recipes_path %>
