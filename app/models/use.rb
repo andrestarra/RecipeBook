@@ -7,7 +7,7 @@ class Use < ApplicationRecord
 
   validates :quantity, presence: true, numericality: { greater_than: 0,
                                                        less_than: 50_000 }
-  validates :measure, presence: true, length: { in: 3..20 }
+  validates :measure, presence: true, length: { maximum: 10 }
   validates :step_id, :ingredient_id, presence: true
   validates :step, uniqueness: { scope: :ingredient }
 end
