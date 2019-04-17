@@ -5,6 +5,7 @@ class CreateUses < ActiveRecord::Migration[5.2]
       t.string :measure
       t.references :step, foreign_key: true
       t.references :ingredient, foreign_key: true
+      t.index %i[step_id ingredient_id], unique: true
 
       t.timestamps
     end

@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_212816) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_uses_on_ingredient_id"
+    t.index ["step_id", "ingredient_id"], name: "index_uses_on_step_id_and_ingredient_id", unique: true
     t.index ["step_id"], name: "index_uses_on_step_id"
   end
 
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_212816) do
     t.bigint "utensil_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["step_id", "utensil_id"], name: "index_utilities_on_step_id_and_utensil_id", unique: true
     t.index ["step_id"], name: "index_utilities_on_step_id"
     t.index ["utensil_id"], name: "index_utilities_on_utensil_id"
   end
