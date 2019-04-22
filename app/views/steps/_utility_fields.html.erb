@@ -1,0 +1,12 @@
+<div class='utility_fields'>
+  <div>
+    <%= f.label :utensil %><br>
+    <%= f.collection_select(:utensil_id, Utensil.all, :id, :name,
+                            { prompt: true }) %>
+  </div>
+
+  <div>
+    <%= f.hidden_field :_destroy %>
+    <%= link_to_remove_fields('Remove utensil', '.utility_fields') %>
+  </div>
+</div>

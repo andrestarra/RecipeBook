@@ -30,7 +30,8 @@ class StepsController < ApplicationController
   def step_params
     params.require(:step).permit(
       :id, :operation, :expected_minutes, :comment,
-      uses_attributes: %i[id quantity measure step_id ingredient_id _destroy]
+      uses_attributes: %i[id quantity measure step_id ingredient_id _destroy],
+      utilities_attributes: %i[id step_id utensil_id]
     )
   end
 end
