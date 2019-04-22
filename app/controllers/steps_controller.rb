@@ -5,7 +5,6 @@ class StepsController < ApplicationController
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.create(step_params)
-    byebug
     redirect_to recipe_path(@recipe)
   end
 
@@ -30,8 +29,8 @@ class StepsController < ApplicationController
 
   def step_params
     params.require(:step).permit(
-      :operation, :expected_minutes, :comment,
-      uses_attributes: %i[ id quantity measure step_id ingredient_id _destroy ]
+      :id, :operation, :expected_minutes, :comment,
+      uses_attributes: %i[id quantity measure step_id ingredient_id _destroy]
     )
   end
 end
