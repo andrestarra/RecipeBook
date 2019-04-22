@@ -4,6 +4,6 @@
 class Ingredient < ApplicationRecord
   has_many :uses, dependent: :destroy
 
-  validates :name, presence: true, length: { in: 3..20 }
+  validates :name, presence: true, length: { in: 3..20 }, uniqueness: true
   validates :calories, length: { maximum: 5 }
 end

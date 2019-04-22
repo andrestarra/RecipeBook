@@ -28,6 +28,9 @@ class StepsController < ApplicationController
   private
 
   def step_params
-    params.require(:step).permit(:operation, :expected_minutes, :comment)
+    params.require(:step).permit(
+      :id, :operation, :expected_minutes, :comment,
+      uses_attributes: %i[id quantity measure step_id ingredient_id _destroy]
+    )
   end
 end

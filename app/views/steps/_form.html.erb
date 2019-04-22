@@ -1,4 +1,6 @@
 <%= form_with(model: [ @recipe, @recipe.steps.build ], local: true) do |form| %>
+  
+
   <div>
     <%= form.label :operation %>
     <%= form.text_area :operation, required: true %>
@@ -12,6 +14,14 @@
   <div>
     <%= form.label :comment %>
     <%= form.text_area :comment %>
+  </div>
+
+  <div>
+    <%= form.fields_for :uses do |ff| %>
+      <%= render partial: 'use_fields', locals: { f: ff } %>
+    <% end %>
+
+    <%= link_to_add_fields('Add an ingredient', form, :uses) %>
   </div>
 
   <div>
