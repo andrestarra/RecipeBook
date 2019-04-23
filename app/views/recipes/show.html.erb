@@ -1,43 +1,50 @@
 <h1>Recipe</h1>
 
-<div>
-  <strong>Plate:</strong>
-  <%= @recipe.plate.name %>
-</div>
-
-<div>
-  <strong>Source:</strong>
-  <%= @recipe.source %>
-</div>
-
-<div>
-  <strong>Location:</strong>
-  <%= @recipe.location %>
-</div>
-
-<div>
-  <strong>Total Minutes:</strong>
-  <%= @recipe.total_minutes %>
-</div>
-
-<div>
-  <h2>Steps</h2>
-  <table>
+<table class='table table-borderless table-hover w-75'>
+  <tbody>
     <tr>
-      <th>Operation</th>
-      <th>Expected Minutes</th>
-      <th>Comment</th>
-      <th colspan='1'></th>
+      <th scope='row'>Plate:</th>
+      <td><%= @recipe.plate.name %></td>
     </tr>
-    
-    <%= render @recipe.steps %>
-  </table>
-</div>
+    <tr>
+      <th scope='row'>Source:</th>
+      <td><%= @recipe.source %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Location:</th>
+      <td><%= @recipe.location %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Total Minutes:</th>
+      <td><%= @recipe.total_minutes %></td>
+    </tr>
+  </tbody>
+</table>
 
-<div>
-  <h2>Add a Step:</h2>
-  <%= render 'steps/form' %>
-</div>
+<%= link_to 'Edit', edit_recipe_path(@recipe), class: 'btn btn-success' %>
+<%= link_to 'Back', recipes_path, class: 'btn btn-secondary btn-sm' %>
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %>
-<%= link_to 'Back', recipes_path %>
+<div class='row'>
+  <div class='col'>
+    <h2>Steps</h2>
+    <table class= 'table table-hover table-striped table-sm'>
+      <thead>
+        <tr>
+          <th>Operation</th>
+          <th>Expected Minutes</th>
+          <th>Comment</th>
+          <th colspan='1'></th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <%= render @recipe.steps %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class='col'>
+    <h2>Add a Step:</h2>
+    <%= render 'steps/form' %>
+  </div>
+</div>

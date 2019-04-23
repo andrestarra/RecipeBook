@@ -2,7 +2,7 @@
   <td><%= step.operation %></td>
   <td><%= step.expected_minutes %></td>
   <td><%= step.comment %></td>
-  <td><%= link_to 'Destroy Step', [step.recipe, step],
+  <td><%= link_to 'Destroy Step', [step.recipe, step], class: 'btn btn-danger btn-sm',
             method: :delete,
             data: { confirm: 'Are you sure' } %></td>
 </tr>

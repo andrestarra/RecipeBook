@@ -1,12 +1,15 @@
-<div class='utility_fields'>
-  <div>
-    <%= f.label :utensil %><br>
-    <%= f.collection_select(:utensil_id, Utensil.all, :id, :name,
-                            { prompt: true }) %>
-  </div>
+<div class='utility_fields use_fields card mb-2'>
+  <div class='card-body'>
+    <div class='form-group'>
+      <%= f.label :utensil %><br>
+      <%= f.collection_select(:utensil_id, Utensil.all, :id, :name,
+                              { prompt: true }, { class: 'form-control' }) %>
+    </div>
 
-  <div>
-    <%= f.hidden_field :_destroy %>
-    <%= link_to_remove_fields('Remove utensil', '.utility_fields') %>
+    <div class='form-group'>
+      <%= f.hidden_field :_destroy %>
+      <%= link_to_remove_fields('Remove utensil', '.utility_fields',
+            class: 'btn btn-danger btn-sm form-control') %>
+    </div>
   </div>
 </div>

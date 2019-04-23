@@ -1,44 +1,38 @@
 <%= form_with(model: [ @recipe, @recipe.steps.build ], local: true) do |form| %>
-  <div>
+  <div class='form-group w-75'>
     <%= form.label :operation %>
-    <%= form.text_area :operation, required: true %>
+    <%= form.text_area :operation, required: true, class: 'form-control' %>
   </div>
 
-  <div>
+  <div class='form-group w-75'>
     <%= form.label :expected_minutes %>
-    <%= form.number_field :expected_minutes, step: :any, required: true %>
+    <%= form.number_field :expected_minutes, step: :any, required: true, class: 'form-control' %>
   </div>
 
-  <div>
+  <div class='form-group w-75'>
     <%= form.label :comment %>
-    <%= form.text_area :comment %>
+    <%= form.text_area :comment, class: 'form-control' %>
   </div>
 
-  <table>
-    <tr>
-      <td>
-        <div>
-          <%= form.fields_for :uses do |ff| %>
-            <%= render partial: 'use_fields', locals: { f: ff } %>
-          <% end %>
+  <table class='table'>
+    <tbody>
+      <tr>
+        <%= form.fields_for :uses do |ff| %>
+          <td><%= render partial: 'use_fields', locals: { f: ff } %></td>
+        <% end %>
 
-          <%= link_to_add_fields('Add an ingredient', form, :uses) %>
-        </div>
-      </td>
-      <td>
-        <div>
-          <%= form.fields_for :utilities do |ff| %>
-            <%= render partial: 'utility_fields', locals: { f: ff } %>
-          <% end %>
-
-          <%= link_to_add_fields('Add an utensil', form, :utilities) %>
-        </div>
-      </td>
-    </tr>
+        <%= form.fields_for :utilities do |ff| %>
+          <td><%= render partial: 'utility_fields', locals: { f: ff } %></td>
+        <% end %>
+      </tr>
+      <tr>
+        <td><%= link_to_add_fields('Add an ingredient', form, :uses, class: 'btn btn-primary btn-sm') %></td>
+        <td><%= link_to_add_fields('Add an utensil', form, :utilities, class: 'btn btn-primary btn-sm') %></td>
+      </tr>
+    </tbody>  
   </table>
-
-
-  <div>
-    <%= form.submit %>
+  
+  <div class='form-group'>
+    <%= form.submit 'Save Step', class: 'btn btn-info form-control' %>
   </div>
 <% end %>

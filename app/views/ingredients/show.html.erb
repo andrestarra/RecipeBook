@@ -1,14 +1,17 @@
 <h1>Ingredient</h1>
 
-<div>
-  <strong>Name:</strong>
-  <%= @ingredient.name %>
-</div>
+<table class='table table-borderless table-hover w-25'>
+  <tbody>
+    <tr>
+      <th scope='row'>Name:</th>
+      <td><%= @ingredient.name %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Calories:</th>
+      <td><%= @ingredient.calories %></td>
+    </tr>
+  </tbody>
+</table>
 
-<div>
-  <strong>Calories:</strong>
-  <%= @ingredient.calories %>
-</div>
-
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %>
-<%= link_to 'Back', ingredients_path %>
+<%= link_to 'Edit', edit_ingredient_path(@ingredient), class: 'btn btn-success' %>
+<%= link_to 'Back', ingredients_path, class: 'btn btn-secondary btn-sm' %>

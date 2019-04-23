@@ -1,9 +1,13 @@
 <h1>Utensil</h1>
 
-<div>
-  <strong>Name:</strong>
-  <%= @utensil.name %>
-</div>
+<table class='table table-borderless table-hover w-25'>
+  <tbody>
+    <tr>
+      <th scope='row'>Name:</th>
+      <td><%= @utensil.name %></td>
+    </tr>
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_utensil_path(@utensil) %>
-<%= link_to 'Back', utensils_path %>
+<%= link_to 'Edit', edit_utensil_path(@utensil), class: 'btn btn-success' %>
+<%= link_to 'Back', utensils_path, class: 'btn btn-secondary btn-sm' %>
