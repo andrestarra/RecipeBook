@@ -10,6 +10,25 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class='navbar navbar-expand-lg navbar-light bg-info'>
+      <%= link_to root_path do %>
+        <%= image_tag('https://bit.ly/2vg67X5', size: '30x30', class: 'd-inline-block align-top') %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+          aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
+        <div class='navbar-nav'>
+          <%= link_to 'Menus', menus_path, class: 'nav-item nav-link' %>
+          <%= link_to 'Plates', plates_path, class: 'nav-item nav-link' %>
+          <%= link_to 'Recipes', recipes_path, class: 'nav-item nav-link' %>
+          <%= link_to 'Ingredients', ingredients_path, class: 'nav-item nav-link' %>
+          <%= link_to 'Utensils', utensils_path, class: 'nav-item nav-link' %>
+        </div>
+      </div>
+    </nav>
+    <div class="container"><%= yield %></div>
   </body>
 </html>

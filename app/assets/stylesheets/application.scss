@@ -10,6 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+ @import "bootstrap";
+ @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+h1, h2 {
+  font-family: 'Dancing Script', cursive;
+}

@@ -14,17 +14,17 @@
       </div>
     <% end %>
 
-  <div>
+  <div class='form-group w-50'>
     <%= form.label :name %>
-    <%= form.text_field :name, required: true %>
+    <%= form.text_field :name, required: true, class: 'form-control' %>
   </div>
 
-  <div>
+  <div class='form-group w-50'>
     <%= form.label :calories %>
-    <%= form.text_field :calories %>
+    <%= form.text_field :calories, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class='form-group w-50'>
+    <%= form.submit 'Save', class: 'btn btn-info form-control' %>
   </div>
 <% end %>

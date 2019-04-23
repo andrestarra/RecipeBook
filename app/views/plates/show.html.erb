@@ -1,39 +1,37 @@
 <h1>Plate</h1>
 
-<div>
-  <strong>Name:</strong>
-  <%= @plate.name %>
-</div>
+<table class='table table-borderless table-hover w-50'>
+  <tbody>
+    <tr>
+      <th scope='row'>Name:</th>
+      <td><%= @plate.name %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Main Ingredient:</th>
+      <td><%= @plate.main_ingredient %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Type of Plate:</th>
+      <td><%= @plate.type_plate %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Price:</th>
+      <td><%= @plate.price %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Menu:</th>
+      <td><%= @plate.menu.name %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Type of Menu:</th>
+      <td><%= @plate.menu.type_menu %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Comment:</th>
+      <td><%= @plate.comment %></td>
+    </tr>
+  </tbody>
+</table>
 
-<div>
-  <strong>Main Ingredient:</strong>
-  <%= @plate.main_ingredient %>
-</div>
-
-<div>
-  <strong>Type of Plate:</strong>
-  <%= @plate.type_plate %>
-</div>
-
-<div>
-  <strong>Price:</strong>
-  <%= @plate.price %>
-</div>
-
-<div>
-  <strong>Comment:</strong>
-  <%= @plate.comment %>
-</div>
-
-<div>
-  <strong>Menu:</strong>
-  <%= @plate.menu.name %>
-</div>
-
-<div>
-  <strong>Type of Menu:</strong>
-  <%= @plate.menu.type_menu %>
-</div>
-
-<%= link_to 'Edit', edit_plate_path(@plate) %>
-<%= link_to 'Back', plates_path %>
+<%= link_to 'Edit', edit_plate_path(@plate), class: 'btn btn-success' %>
+<%= link_to 'Back', plates_path, class: 'btn btn-secondary btn-sm' %>

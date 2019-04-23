@@ -1,22 +1,25 @@
-<div class='use_fields'>
-  <div>
-    <%= f.label :ingredient %><br>
-    <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name,
-                            { prompt: true }) %>
-  </div>
-  
-  <div>
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity, step: :any, required: true %>
-  </div>
+<div class='use_fields card mb-2'>
+  <div class='card-body'>
+    <div class='form-group'>
+      <%= f.label :ingredient %><br>
+      <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name,
+                              { prompt: true }, { class: 'form-control' }) %>
+    </div>
+    
+    <div class='form-group'>
+      <%= f.label :quantity %>
+      <%= f.number_field :quantity, step: :any, required: true, class: 'form-control' %>
+    </div>
 
-  <div>
-    <%= f.label :measure %>
-    <%= f.text_field :measure, required: true  %>
-  </div>
+    <div class='form-group'>
+      <%= f.label :measure %>
+      <%= f.text_field :measure, required: true, class: 'form-control'  %>
+    </div>
 
-  <div>
-    <%= f.hidden_field :_destroy %>
-    <%= link_to_remove_fields('Remove ingredient', '.use_fields') %>
+    <div class='form-group'>
+      <%= f.hidden_field :_destroy %>
+      <%= link_to_remove_fields('Remove ingredient', '.use_fields',
+            class: 'btn btn-danger btn-sm') %>
+    </div>
   </div>
 </div>

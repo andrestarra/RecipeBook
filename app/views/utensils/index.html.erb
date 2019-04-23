@@ -1,22 +1,25 @@
-<h1>Listing Utensils</h1>
+<h1>Utensils</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th colspan='3'></th>
-  </tr>
-
-  <% @utensils.each do |utensil| %>
+<table class='table table-hover table-striped table-sm'>
+  <thead>
     <tr>
-      <td><%= utensil.name %></td>
-      <td><%= link_to 'Show', utensil_path(utensil) %></td>
-      <td><%= link_to 'Edit', edit_utensil_path(utensil) %></td>
-      <td><%= link_to 'Destroy', utensil_path(utensil),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+      <th>Name</th>
+      <th colspan='3'></th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @utensils.each do |utensil| %>
+      <tr>
+        <td><%= utensil.name %></td>
+        <td><%= link_to 'Show', utensil_path(utensil), class: 'btn btn-success btn-sm' %></td>
+        <td><%= link_to 'Edit', edit_utensil_path(utensil), class: 'btn btn-secondary btn-sm' %></td>
+        <td><%= link_to 'Destroy', utensil_path(utensil), class: 'btn btn-danger btn-sm',
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<%= link_to 'New Utensil', new_utensil_path %> |
-<%= link_to 'Main Menu', root_path %>
+<%= link_to 'New Utensil', new_utensil_path, class: 'btn btn-info' %>
