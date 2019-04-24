@@ -15,6 +15,15 @@
  @import "bootstrap";
  @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 
-h1, h2 {
+h1, h2, .menu {
   font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+}
+
+body {
+  background-color: #F3EBE9;
+}
+
+.dropdown-menu {
+  width: 300px !important;
 }

@@ -2,6 +2,7 @@
 
 # Recipes Controller
 class RecipesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @recipes = Recipe.all
   end
@@ -23,8 +24,10 @@ class RecipesController < ApplicationController
 
     if @recipe.save
       redirect_to @recipe
+      flash[:notice] = 'Recipe successfully created'
     else
       render 'new'
+      flash[:alert] = 'Recipe could not be created'
     end
   end
 
@@ -33,8 +36,10 @@ class RecipesController < ApplicationController
 
     if @recipe.update(recipe_params)
       redirect_to @recipe
+      flash[:notice] = 'Recipe successfully updated'
     else
       render 'edit'
+      flash[:alert] = 'Recipe could not be updated'
     end
   end
 
@@ -43,6 +48,7 @@ class RecipesController < ApplicationController
     @recipe.destroy
 
     redirect_to recipes_path
+    flash[:error] = 'Recipe successfully destroyed'
   end
 
   private

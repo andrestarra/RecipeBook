@@ -2,7 +2,7 @@
 
 # Utensil model
 class Utensil < ApplicationRecord
-  has_many :utensils, dependent: :destroy
+  has_many :utilities, dependent: :destroy
 
   validates :name, presence: true, length: { in: 3..20 }
 end

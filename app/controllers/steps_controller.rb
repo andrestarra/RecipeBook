@@ -2,27 +2,20 @@
 
 # Steps controller
 class StepsController < ApplicationController
+  before_action :authenticate_user!
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.create(step_params)
+    flash[:notice] = 'Step successfully created'
     redirect_to recipe_path(@recipe)
   end
-
-  # def update
-  #   @step = Step.find(params[:id])
-
-  #   if @step.update(step_params)
-  #     redirect_to @step
-  #   else
-  #     render 'edit'
-  #   end
-  # end
 
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.find(params[:id])
     @step.destroy
     redirect_to recipe_path(@recipe)
+    flash[:error] = 'Step successfully destroyed'
   end
 
   private

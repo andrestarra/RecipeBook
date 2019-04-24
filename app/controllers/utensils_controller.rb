@@ -2,6 +2,7 @@
 
 # Utensils controller
 class UtensilsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @utensils = Utensil.all
   end
@@ -23,8 +24,10 @@ class UtensilsController < ApplicationController
 
     if @utensil.save
       redirect_to @utensil
+      flash[:notice] = 'Utensil successfully created'
     else
       render 'new'
+      flash[:alert] = 'Utensil could not be created'
     end
   end
 
@@ -33,8 +36,10 @@ class UtensilsController < ApplicationController
 
     if @utensil.update(utensil_params)
       redirect_to @utensil
+      flash[:notice] = 'Utensil successfully updated'
     else
       render 'edit'
+      flash[:alert] = 'Utensil could not be updated'
     end
   end
 
@@ -43,6 +48,7 @@ class UtensilsController < ApplicationController
     @utensil.destroy
 
     redirect_to utensils_path
+    flash[:error] = 'Utensil successfully destroyed'
   end
 
   private

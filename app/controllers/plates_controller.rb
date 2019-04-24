@@ -2,6 +2,7 @@
 
 # Plates Controller
 class PlatesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @plates = Plate.all
   end
@@ -23,8 +24,10 @@ class PlatesController < ApplicationController
 
     if @plate.save
       redirect_to @plate
+      flash[:notice] = 'Plate successfully created'
     else
       render 'new'
+      flash[:alert] = 'Plate could not be created'
     end
   end
 
@@ -33,8 +36,10 @@ class PlatesController < ApplicationController
 
     if @plate.update(plate_params)
       redirect_to @plate
+      flash[:notice] = 'Plate successfully updated'
     else
       render 'edit'
+      flash[:alert] = 'Plate could not be updated'
     end
   end
 
@@ -43,6 +48,7 @@ class PlatesController < ApplicationController
     @plate.destroy
 
     redirect_to plates_path
+    flash[:error] = 'Plate successfully destroyed'
   end
 
   private

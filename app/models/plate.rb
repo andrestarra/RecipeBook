@@ -4,6 +4,7 @@
 class Plate < ApplicationRecord
   has_many :recipes, dependent: :destroy
   belongs_to :menu
+  belongs_to :user
 
   validates :name, uniqueness: true
   validates :name, :main_ingredient, :type_plate, presence: true, length: { in: 3..25 }

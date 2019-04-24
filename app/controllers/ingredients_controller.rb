@@ -2,6 +2,7 @@
 
 # Ingredients Controller
 class IngredientsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @ingredients = Ingredient.all
   end
@@ -23,8 +24,10 @@ class IngredientsController < ApplicationController
 
     if @ingredient.save
       redirect_to @ingredient
+      flash[:notice] = 'Ingredient successfully created'
     else
       render 'new'
+      flash[:alert] = 'Ingredient could not be created'
     end
   end
 
@@ -33,8 +36,10 @@ class IngredientsController < ApplicationController
 
     if @ingredient.update(ingredient_params)
       redirect_to @ingredient
+      flash[:notice] = 'Ingredient successfully updated'
     else
       render 'edit'
+      flash[:alert] = 'Ingredient could not be updated'
     end
   end
 
@@ -43,6 +48,7 @@ class IngredientsController < ApplicationController
     @ingredient.destroy
 
     redirect_to ingredients_path
+    flash[:error] = 'Ingredient successfully destroyed'
   end
 
   private

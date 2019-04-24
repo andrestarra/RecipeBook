@@ -2,6 +2,7 @@
 
 # Menus controller
 class MenusController < ApplicationController
+  before_action :authenticate_user!
   def index
     @menus = Menu.all
   end
@@ -23,8 +24,10 @@ class MenusController < ApplicationController
 
     if @menu.save
       redirect_to @menu
+      flash[:notice] = 'Menu successfully created'
     else
       render 'new'
+      flash[:alert] = 'Menu could not be created'
     end
   end
 
@@ -33,8 +36,10 @@ class MenusController < ApplicationController
 
     if @menu.update(menu_params)
       redirect_to @menu
+      flash[:notice] = 'Menu successfully updated'
     else
       render 'edit'
+      flash[:alert] = 'Menu could not be updated'
     end
   end
 
@@ -43,6 +48,7 @@ class MenusController < ApplicationController
     @menu.destroy
 
     redirect_to menus_path
+    flash[:error] = 'Menu successfully destroyed'
   end
 
   private
