@@ -4,7 +4,7 @@
 class IngredientsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.my_ingredients
   end
 
   def show
@@ -21,6 +21,7 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
+    @ingredient.user_id = current_user.id
 
     if @ingredient.save
       redirect_to @ingredient
@@ -33,6 +34,7 @@ class IngredientsController < ApplicationController
 
   def update
     @ingredient = Ingredient.find(params[:id])
+    @ingredient.user_id = current_user.id
 
     if @ingredient.update(ingredient_params)
       redirect_to @ingredient

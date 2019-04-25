@@ -4,7 +4,7 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.my_recipes
   end
 
   def show
@@ -21,6 +21,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
 
     if @recipe.save
       redirect_to @recipe
@@ -33,6 +34,7 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
+    @recipe.user_id = current_user.id
 
     if @recipe.update(recipe_params)
       redirect_to @recipe

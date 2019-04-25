@@ -4,7 +4,7 @@
 class UtensilsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @utensils = Utensil.all
+    @utensils = Utensil.my_utensils
   end
 
   def show
@@ -21,6 +21,7 @@ class UtensilsController < ApplicationController
 
   def create
     @utensil = Utensil.new(utensil_params)
+    @utensil.user_id = current_user.id
 
     if @utensil.save
       redirect_to @utensil
@@ -33,6 +34,7 @@ class UtensilsController < ApplicationController
 
   def update
     @utensil = Utensil.find(params[:id])
+    @utensil.user_id = current_user.id
 
     if @utensil.update(utensil_params)
       redirect_to @utensil

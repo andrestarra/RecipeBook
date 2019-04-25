@@ -18,15 +18,19 @@ ActiveRecord::Schema.define(version: 2019_04_23_205753) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "calories"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_ingredients_on_user_id"
   end
 
   create_table "menus", force: :cascade do |t|
     t.string "name"
     t.string "type_menu"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_menus_on_user_id"
   end
 
   create_table "plates", force: :cascade do |t|
@@ -48,9 +52,11 @@ ActiveRecord::Schema.define(version: 2019_04_23_205753) do
     t.string "location"
     t.float "total_minutes"
     t.bigint "plate_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["plate_id"], name: "index_recipes_on_plate_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "steps", force: :cascade do |t|
@@ -90,8 +96,10 @@ ActiveRecord::Schema.define(version: 2019_04_23_205753) do
 
   create_table "utensils", force: :cascade do |t|
     t.string "name"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_utensils_on_user_id"
   end
 
   create_table "utilities", force: :cascade do |t|
@@ -104,12 +112,16 @@ ActiveRecord::Schema.define(version: 2019_04_23_205753) do
     t.index ["utensil_id"], name: "index_utilities_on_utensil_id"
   end
 
+  add_foreign_key "ingredients", "users"
+  add_foreign_key "menus", "users"
   add_foreign_key "plates", "menus"
   add_foreign_key "plates", "users"
   add_foreign_key "recipes", "plates"
+  add_foreign_key "recipes", "users"
   add_foreign_key "steps", "recipes"
   add_foreign_key "uses", "ingredients"
   add_foreign_key "uses", "steps"
+  add_foreign_key "utensils", "users"
   add_foreign_key "utilities", "steps"
   add_foreign_key "utilities", "utensils"
 end

@@ -1,6 +1,6 @@
 <h1>Recipe</h1>
 
-<table class='table table-borderless table-hover w-75'>
+<table class='table table-borderless table-hover w-50'>
   <tbody>
     <tr>
       <th scope='row'>Plate:</th>
@@ -22,29 +22,42 @@
 </table>
 
 <%= link_to 'Edit', edit_recipe_path(@recipe), class: 'btn btn-success' %>
-<%= link_to 'Back', recipes_path, class: 'btn btn-secondary btn-sm' %>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target='<%= "#step_modal" %>'>
+  Add a Step
+</button>
 
-<div class='row'>
-  <div class='col'>
-    <h2>Steps</h2>
-    <table class= 'table table-hover table-striped table-sm'>
-      <thead>
-        <tr>
-          <th>Operation</th>
-          <th>Expected Minutes</th>
-          <th>Comment</th>
-          <th colspan='1'></th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <%= render @recipe.steps %>
-      </tbody>
-    </table>
-  </div>
-
-  <div class='col'>
-    <h2>Add a Step:</h2>
-    <%= render 'steps/form' %>
+<div class="modal fade" id='<%= "step_modal" %>' tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">Add a Step</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'steps/form' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
+<%= link_to 'Back', recipes_path, class: 'btn btn-secondary btn-sm' %>
+
+<h2>Steps</h2>
+<table class= 'table table-hover table-striped table-sm'>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Expected Minutes</th>
+      <th>Comment</th>
+      <th colspan='2'></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <%= render @recipe.steps %>
+  </tbody>
+</table>
