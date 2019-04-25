@@ -9,6 +9,7 @@
       <th>Price</th>
       <th>Menu</th>
       <th>Type of Menu</th>
+      <th>Owner</th>
       <th colspan='3'></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= plate.price %></td>
         <td><%= plate.menu.name %></td>
         <td><%= plate.menu.type_menu %></td>
+        <td><%= plate.user.name %></td>
         <td><%= link_to 'Show', plate_path(plate), class: 'btn btn-success btn-sm' %></td>
         <td><%= link_to 'Edit', edit_plate_path(plate), class: 'btn btn-secondary btn-sm' %></td>
         <td><%= link_to 'Destroy', plate_path(plate), class: 'btn btn-danger btn-sm',

@@ -4,7 +4,8 @@
 class PlatesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @plates = Plate.all
+    # Voy por aquí
+    @plates = Plate.my_dishes
   end
 
   def show
@@ -21,6 +22,7 @@ class PlatesController < ApplicationController
 
   def create
     @plate = Plate.new(plate_params)
+    @plate.user_id = current_user.id
 
     if @plate.save
       redirect_to @plate
@@ -33,6 +35,7 @@ class PlatesController < ApplicationController
 
   def update
     @plate = Plate.find(params[:id])
+    @plate.user_id = current_user.id
 
     if @plate.update(plate_params)
       redirect_to @plate
