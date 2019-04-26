@@ -2,12 +2,13 @@
 
 # Menus controller
 class MenusController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @menus = Menu.all
+    @menus = Menu.my_menus
   end
 
   def show
-    @menu = Menu.find(params[:id])
+    @menu = Menu.my_menus.find(params[:id])
   end
 
   def new
@@ -15,26 +16,32 @@ class MenusController < ApplicationController
   end
 
   def edit
-    @menu = Menu.find(params[:id])
+    @menu = Menu.my_menus.find(params[:id])
   end
 
   def create
     @menu = Menu.new(menu_params)
+    @menu.user_id = current_user.id
 
     if @menu.save
       redirect_to @menu
+      flash[:notice] = 'Menu successfully created'
     else
       render 'new'
+      flash[:alert] = 'Menu could not be created'
     end
   end
 
   def update
     @menu = Menu.find(params[:id])
+    @menu.user_id = current_user.id
 
     if @menu.update(menu_params)
       redirect_to @menu
+      flash[:notice] = 'Menu successfully updated'
     else
       render 'edit'
+      flash[:alert] = 'Menu could not be updated'
     end
   end
 
@@ -43,6 +50,7 @@ class MenusController < ApplicationController
     @menu.destroy
 
     redirect_to menus_path
+    flash[:error] = 'Menu successfully destroyed'
   end
 
   private

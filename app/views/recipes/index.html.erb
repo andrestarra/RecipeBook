@@ -3,6 +3,7 @@
 <table class= 'table table-hover table-striped table-sm'>
   <thead>
     <tr>
+      <th>Name of the Dish</th>
       <th>Source</th>
       <th>Location</th>
       <th>Total Minutes</th>
@@ -13,6 +14,7 @@
   <tbody>
     <% @recipes.each do |recipe| %>
       <tr>
+        <td><%= recipe.plate.name %></td>
         <td><%= recipe.source %></td>
         <td><%= recipe.location %></td>
         <td><%= recipe.total_minutes %></td>

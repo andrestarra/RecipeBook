@@ -5,6 +5,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
       t.string :location
       t.float :total_minutes
       t.references :plate, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

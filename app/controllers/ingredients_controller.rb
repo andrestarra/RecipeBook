@@ -2,12 +2,13 @@
 
 # Ingredients Controller
 class IngredientsController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.my_ingredients
   end
 
   def show
-    @ingredient = Ingredient.find(params[:id])
+    @ingredient = Ingredient.my_ingredients.find(params[:id])
   end
 
   def new
@@ -15,26 +16,32 @@ class IngredientsController < ApplicationController
   end
 
   def edit
-    @ingredient = Ingredient.find(params[:id])
+    @ingredient = Ingredient.my_ingredients.find(params[:id])
   end
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
+    @ingredient.user_id = current_user.id
 
     if @ingredient.save
       redirect_to @ingredient
+      flash[:notice] = 'Ingredient successfully created'
     else
       render 'new'
+      flash[:alert] = 'Ingredient could not be created'
     end
   end
 
   def update
     @ingredient = Ingredient.find(params[:id])
+    @ingredient.user_id = current_user.id
 
     if @ingredient.update(ingredient_params)
       redirect_to @ingredient
+      flash[:notice] = 'Ingredient successfully updated'
     else
       render 'edit'
+      flash[:alert] = 'Ingredient could not be updated'
     end
   end
 
@@ -43,6 +50,7 @@ class IngredientsController < ApplicationController
     @ingredient.destroy
 
     redirect_to ingredients_path
+    flash[:error] = 'Ingredient successfully destroyed'
   end
 
   private

@@ -2,12 +2,13 @@
 
 # Plates Controller
 class PlatesController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @plates = Plate.all
+    @plates = Plate.my_dishes
   end
 
   def show
-    @plate = Plate.find(params[:id])
+    @plate = Plate.my_dishes.find(params[:id])
   end
 
   def new
@@ -15,26 +16,32 @@ class PlatesController < ApplicationController
   end
 
   def edit
-    @plate = Plate.find(params[:id])
+    @plate = Plate.my_dishes.find(params[:id])
   end
 
   def create
     @plate = Plate.new(plate_params)
+    @plate.user_id = current_user.id
 
     if @plate.save
       redirect_to @plate
+      flash[:notice] = 'Plate successfully created'
     else
       render 'new'
+      flash[:alert] = 'Plate could not be created'
     end
   end
 
   def update
     @plate = Plate.find(params[:id])
+    @plate.user_id = current_user.id
 
     if @plate.update(plate_params)
       redirect_to @plate
+      flash[:notice] = 'Plate successfully updated'
     else
       render 'edit'
+      flash[:alert] = 'Plate could not be updated'
     end
   end
 
@@ -43,6 +50,7 @@ class PlatesController < ApplicationController
     @plate.destroy
 
     redirect_to plates_path
+    flash[:error] = 'Plate successfully destroyed'
   end
 
   private

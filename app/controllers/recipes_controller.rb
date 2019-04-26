@@ -2,12 +2,13 @@
 
 # Recipes Controller
 class RecipesController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.my_recipes
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.my_recipes.find(params[:id])
   end
 
   def new
@@ -15,26 +16,32 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.my_recipes.find(params[:id])
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
 
     if @recipe.save
       redirect_to @recipe
+      flash[:notice] = 'Recipe successfully created'
     else
       render 'new'
+      flash[:alert] = 'Recipe could not be created'
     end
   end
 
   def update
     @recipe = Recipe.find(params[:id])
+    @recipe.user_id = current_user.id
 
     if @recipe.update(recipe_params)
       redirect_to @recipe
+      flash[:notice] = 'Recipe successfully updated'
     else
       render 'edit'
+      flash[:alert] = 'Recipe could not be updated'
     end
   end
 
@@ -43,6 +50,7 @@ class RecipesController < ApplicationController
     @recipe.destroy
 
     redirect_to recipes_path
+    flash[:error] = 'Recipe successfully destroyed'
   end
 
   private
