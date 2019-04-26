@@ -8,7 +8,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.my_recipes.find(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.my_recipes.find(params[:id])
   end
 
   def create

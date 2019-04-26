@@ -8,7 +8,7 @@ class UtensilsController < ApplicationController
   end
 
   def show
-    @utensil = Utensil.find(params[:id])
+    @utensil = Utensil.my_utensils.find(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class UtensilsController < ApplicationController
   end
 
   def edit
-    @utensil = Utensil.find(params[:id])
+    @utensil = Utensil.my_utensils.find(params[:id])
   end
 
   def create

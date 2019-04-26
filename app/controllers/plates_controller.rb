@@ -4,12 +4,11 @@
 class PlatesController < ApplicationController
   before_action :authenticate_user!
   def index
-    # Voy por aquí
     @plates = Plate.my_dishes
   end
 
   def show
-    @plate = Plate.find(params[:id])
+    @plate = Plate.my_dishes.find(params[:id])
   end
 
   def new
@@ -17,7 +16,7 @@ class PlatesController < ApplicationController
   end
 
   def edit
-    @plate = Plate.find(params[:id])
+    @plate = Plate.my_dishes.find(params[:id])
   end
 
   def create

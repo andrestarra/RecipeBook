@@ -26,6 +26,25 @@
   Add a Step
 </button>
 
+<%= link_to 'Back', recipes_path, class: 'btn btn-secondary btn-sm' %>
+
+<h2>Steps</h2>
+<table class= 'table table-hover table-striped table-sm'>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Expected Minutes</th>
+      <th>Comment</th>
+      <th >info</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+  
+  <tbody>    
+    <%= render @recipe.steps %>
+  </tbody>
+</table>
+
 <div class="modal fade" id='<%= "step_modal" %>' tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -44,20 +63,3 @@
     </div>
   </div>
 </div>
-<%= link_to 'Back', recipes_path, class: 'btn btn-secondary btn-sm' %>
-
-<h2>Steps</h2>
-<table class= 'table table-hover table-striped table-sm'>
-  <thead>
-    <tr>
-      <th>Operation</th>
-      <th>Expected Minutes</th>
-      <th>Comment</th>
-      <th colspan='2'></th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <%= render @recipe.steps %>
-  </tbody>
-</table>

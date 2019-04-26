@@ -8,7 +8,7 @@ class IngredientsController < ApplicationController
   end
 
   def show
-    @ingredient = Ingredient.find(params[:id])
+    @ingredient = Ingredient.my_ingredients.find(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class IngredientsController < ApplicationController
   end
 
   def edit
-    @ingredient = Ingredient.find(params[:id])
+    @ingredient = Ingredient.my_ingredients.find(params[:id])
   end
 
   def create

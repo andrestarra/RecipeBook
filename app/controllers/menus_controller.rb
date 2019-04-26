@@ -8,7 +8,7 @@ class MenusController < ApplicationController
   end
 
   def show
-    @menu = Menu.find(params[:id])
+    @menu = Menu.my_menus.find(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class MenusController < ApplicationController
   end
 
   def edit
-    @menu = Menu.find(params[:id])
+    @menu = Menu.my_menus.find(params[:id])
   end
 
   def create
