@@ -5,7 +5,7 @@ class Utensil < ApplicationRecord
   has_many :utilities
   belongs_to :user
 
-  validates :name, presence: true, length: { in: 3..20 }
+  validates :name, presence: true, length: { in: 3..20 }, uniqueness: { scope: :user_id }
 
   cattr_accessor :current_user
 

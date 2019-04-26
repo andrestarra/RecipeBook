@@ -2,5 +2,7 @@
 
 # Welcome Controller
 class WelcomeController < ApplicationController
-  def index; end
+  def index
+    @recipes = Recipe.order(:created_at).reverse_order.last(5)
+  end
 end

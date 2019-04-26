@@ -5,7 +5,7 @@ class Ingredient < ApplicationRecord
   has_many :uses
   belongs_to :user
 
-  validates :name, presence: true, length: { in: 3..20 }, uniqueness: true
+  validates :name, presence: true, length: { in: 3..20 }, uniqueness: { scope: :user_id }
   validates :calories, length: { maximum: 5 }
 
   cattr_accessor :current_user

@@ -3,6 +3,11 @@
 # Steps controller
 class StepsController < ApplicationController
   before_action :authenticate_user!
+  def edit
+    @recipe = Recipe.find(params[:id])
+    @step = @recipe.steps.find(params[:id])
+  end
+
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.new(step_params)
@@ -11,7 +16,7 @@ class StepsController < ApplicationController
       redirect_to recipe_path(@recipe)
       flash[:notice] = 'Step successfully created'
     else
-      render 'recipe/show'
+      redirect_to recipe_path(@recipe)
       flash[:alert] = 'Step could not be created'
     end
   end
@@ -24,7 +29,7 @@ class StepsController < ApplicationController
       redirect_to recipe_path(@recipe)
       flash[:notice] = 'Step successfully updated'
     else
-      render 'recipe/show'
+      redirect_to recipe_path(@recipe)
       flash[:alert] = 'Step could not be updated'
     end
   end

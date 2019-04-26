@@ -41,7 +41,7 @@
 
   <div class='form-group w-50'>
     <%= form.label :menu %>
-    <%= form.collection_select(:menu_id, Menu.all, :id, :menu_and_type,
+    <%= form.collection_select(:menu_id, Menu.my_menus, :id, :menu_and_type,
                               { prompt: true }, { class: 'form-control' }) %>
   </div>
 

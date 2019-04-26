@@ -6,7 +6,7 @@ class Menu < ApplicationRecord
   belongs_to :user
 
   validates :name, :type_menu, presence: true, length: { in: 3..25 }
-  validates :name, uniqueness: { scope: :type_menu }
+  validates :name, uniqueness: { scope: [:type_menu, :user_id] }
 
   cattr_accessor :current_user
 
