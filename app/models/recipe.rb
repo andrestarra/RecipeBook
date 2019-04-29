@@ -9,7 +9,5 @@ class Recipe < ApplicationRecord
   validates :source, :location, presence: true, length: { in: 3..25 }
   validates :plate_id, presence: true
 
-  cattr_accessor :current_user
-
   scope :my_recipes, -> { where(user_id: Plate.current_user.id) }
 end

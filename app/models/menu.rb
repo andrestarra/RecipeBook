@@ -8,8 +8,6 @@ class Menu < ApplicationRecord
   validates :name, :type_menu, presence: true, length: { in: 3..25 }
   validates :name, uniqueness: { scope: [:type_menu, :user_id] }
 
-  cattr_accessor :current_user
-
   scope :my_menus, -> { where(user_id: Plate.current_user.id) }
 
   private

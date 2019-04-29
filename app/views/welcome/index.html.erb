@@ -1,8 +1,8 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselRecipes" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselRecipes" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselRecipes" data-slide-to="1"></li>
+    <li data-target="#carouselRecipes" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -15,43 +15,44 @@
       <img class="d-block w-100" src="https://bit.ly/2IBwTSj" alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselRecipes" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+  <a class="carousel-control-next" href="#carouselRecipes" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>
 
-<div class="mt-3 w-50">
-  <h2>Last Recipes</h2>
-  <% @recipes.each do |recipe| %>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><%= recipe.plate.name %></h5>
-        <h6 class="card-subtitle mb-2 text-muted"><%= recipe.user.name %></h6>
-        <p class="cart-text">
-          <table class='table table-borderless table-hover table-sm'>
-            <tbody>
-              <tr>
-                <th scope='row'>Main Ingredient:</th>
-                <td><%= recipe.plate.main_ingredient %></td>
-              </tr>
-              <tr>
-                <th scope='row'>Type of Plate:</th>
-                <td><%= recipe.plate.type_plate %></td>
-              </tr>
-              <tr>
-                <th scope='row'>Price:</th>
-                <td><%= recipe.plate.price %></td>
-              </tr>
-            </tbody>
-          </table>
-        </p>
+<% unless user_signed_in? %>
+  <div class="mt-3 w-50">
+    <h2>Last Recipes</h2>
+    <% @recipes.each do |recipe| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to "#{recipe.plate.name}", welcome_path(recipe) %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= recipe.user.name %></h6>
+          <p class="cart-text">
+            <table class='table table-borderless table-hover table-sm'>
+              <tbody>
+                <tr>
+                  <th scope='row'>Main Ingredient:</th>
+                  <td><%= recipe.plate.main_ingredient %></td>
+                </tr>
+                <tr>
+                  <th scope='row'>Type of Plate:</th>
+                  <td><%= recipe.plate.type_plate %></td>
+                </tr>
+                <tr>
+                  <th scope='row'>Price:</th>
+                  <td><%= recipe.plate.price %></td>
+                </tr>
+              </tbody>
+            </table>
+          </p>
+        </div>
       </div>
-    </div>
-  <% end %>
-
-</div>
+    <% end %>
+  </div>
+<% end %>

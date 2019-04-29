@@ -12,4 +12,5 @@ class Plate < ApplicationRecord
 
   cattr_accessor :current_user
 
-  scope :my_dishes, -> { where(user_id: current_user.id) }end
+  scope :my_dishes, -> { where(user_id: current_user.id) }
+end

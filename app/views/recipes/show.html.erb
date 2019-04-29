@@ -18,15 +18,23 @@
       <th scope='row'>Total Minutes:</th>
       <td><%= @recipe.total_minutes %></td>
     </tr>
+    <% unless user_signed_in? %>
+      <tr>
+        <th scope='row'>Owner:</th>
+        <td><%= @recipe.user.name %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_recipe_path(@recipe), class: 'btn btn-success' %>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target='<%= "#step_modal" %>'>
-  Add a Step
-</button>
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_recipe_path(@recipe), class: 'btn btn-success' %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target='<%= "#step_modal" %>'>
+    Add a Step
+  </button>
 
-<%= link_to 'Back', recipes_path, class: 'btn btn-secondary btn-sm' %>
+  <%= link_to 'Back', recipes_path, class: 'btn btn-secondary btn-sm' %>
+<% end %>
 
 <h2>Steps</h2>
 <table class= 'table table-hover table-striped table-sm'>
@@ -35,7 +43,9 @@
       <th>Operation</th>
       <th>Expected Minutes</th>
       <th>Comment</th>
-      <th colspan='2'></th>
+      <% if user_signed_in? %>
+        <th colspan='2'></th>
+      <% end %>
     </tr>
   </thead>
   
