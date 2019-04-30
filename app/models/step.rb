@@ -9,6 +9,5 @@ class Step < ApplicationRecord
   accepts_nested_attributes_for :utilities, reject_if: :all_blank, allow_destroy: true
 
   validates :operation, presence: true, length: { minimum: 3 }
-  validates :expected_minutes, length: { maximum: 5 }
-  validates :recipe_id, presence: true
+  validates :expected_minutes, numericality: { greater_than: 0, less_than: 60 }
 end

@@ -7,7 +7,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
 
   validates :source, :location, presence: true, length: { in: 3..25 }
-  validates :plate_id, presence: true
+  validates :total_minutes, numericality: { greater_than: 0, less_than: 120 }
 
   scope :my_recipes, -> { where(user_id: Plate.current_user.id) }
 end

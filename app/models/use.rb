@@ -8,5 +8,5 @@ class Use < ApplicationRecord
   validates :quantity, presence: true, numericality: { greater_than: 0,
                                                        less_than: 50_000 }
   validates :measure, presence: true, length: { maximum: 10 }
-  validates :step, uniqueness: { scope: :ingredient }
+  validates :step_id, uniqueness: { scope: :ingredient_id }
 end

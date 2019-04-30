@@ -75,6 +75,5 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 gem 'jquery-rails'
 gem 'link_to_add_fields'
-gem 'rubocop', require: false
 gem 'rubocop-performance'
 gem 'simplecov', require: false, group: :test
