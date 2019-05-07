@@ -33,8 +33,7 @@ class IngredientsController < ApplicationController
   end
 
   def update
-    @ingredient = Ingredient.find(params[:id])
-    @ingredient.user_id = current_user.id
+    @ingredient = Ingredient.my_ingredients.find(params[:id])
 
     if @ingredient.update(ingredient_params)
       redirect_to @ingredient
@@ -46,7 +45,7 @@ class IngredientsController < ApplicationController
   end
 
   def destroy
-    @ingredient = Ingredient.find(params[:id])
+    @ingredient = Ingredient.my_ingredients.find(params[:id])
     @ingredient.destroy
 
     redirect_to ingredients_path

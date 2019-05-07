@@ -1,9 +1,17 @@
 FactoryBot.define do
   factory :plate do
-    name { "MyString" }
+    sequence(:name) {|n| " name #{n}" }
     main_ingredient { "MyString" }
-    type { "" }
+    type_plate { "MyString" }
     price { 1.5 }
     comment { "MyString" }
+
+    trait :invalid do
+      name { nil }
+    end
+
+    trait :new_name do
+      name { 'New plate' }
+    end
   end
 end

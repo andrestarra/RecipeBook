@@ -1,10 +1,14 @@
 FactoryBot.define do
   factory :ingredient do
-    name { 'rice' }
-    calories { '130' }
+    sequence(:name) {|n| " name ingredient #{n}" }
+    calories { "130" }
 
     trait :invalid do
       name { nil }
+    end
+
+    trait :new_name do
+      name { 'New ingredient' }
     end
   end
 end

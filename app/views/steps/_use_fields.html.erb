@@ -2,7 +2,7 @@
   <div class='card-body'>
     <div class='form-group'>
       <%= f.label :ingredient %><br>
-      <%= f.collection_select(:ingredient_id, Ingredient.all, :id, :name,
+      <%= f.collection_select(:ingredient_id, Ingredient.my_ingredients, :id, :name,
                               { prompt: true }, { class: 'form-control' }) %>
     </div>
     

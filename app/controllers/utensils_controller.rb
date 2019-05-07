@@ -33,8 +33,7 @@ class UtensilsController < ApplicationController
   end
 
   def update
-    @utensil = Utensil.find(params[:id])
-    @utensil.user_id = current_user.id
+    @utensil = Utensil.my_utensils.find(params[:id])
 
     if @utensil.update(utensil_params)
       redirect_to @utensil
@@ -46,7 +45,7 @@ class UtensilsController < ApplicationController
   end
 
   def destroy
-    @utensil = Utensil.find(params[:id])
+    @utensil = Utensil.my_utensils.find(params[:id])
     @utensil.destroy
 
     redirect_to utensils_path

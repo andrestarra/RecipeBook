@@ -5,5 +5,5 @@ class Utility < ApplicationRecord
   belongs_to :step
   belongs_to :utensil
 
-  validates :utensil, uniqueness: { scope: :step }
+  validates :utensil_id, uniqueness: { scope: :step_id }
 end

@@ -33,8 +33,7 @@ class PlatesController < ApplicationController
   end
 
   def update
-    @plate = Plate.find(params[:id])
-    @plate.user_id = current_user.id
+    @plate = Plate.my_dishes.find(params[:id])
 
     if @plate.update(plate_params)
       redirect_to @plate
@@ -46,7 +45,7 @@ class PlatesController < ApplicationController
   end
 
   def destroy
-    @plate = Plate.find(params[:id])
+    @plate = Plate.my_dishes.find(params[:id])
     @plate.destroy
 
     redirect_to plates_path

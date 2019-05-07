@@ -49,8 +49,8 @@
     </tr>
   </thead>
   
-  <tbody>    
-    <%= render @recipe.steps %>
+  <tbody>
+    <%= render @recipe.steps.order(:id) %>
   </tbody>
 </table>
 
