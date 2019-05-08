@@ -8,10 +8,6 @@ class Step < ApplicationRecord
   accepts_nested_attributes_for :uses, :utilities,
                                 reject_if: :all_blank, allow_destroy: true
 
-
   validates :operation, presence: true, length: { minimum: 3 }
   validates :expected_minutes, numericality: { greater_than: 0, less_than: 60 }
-
-  private
-
 end
