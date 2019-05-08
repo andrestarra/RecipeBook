@@ -4,27 +4,26 @@
 class StepsController < ApplicationController
   before_action :authenticate_user!
   def edit
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.my_recipes.find(params[:recipe_id])
     @step = Step.find(params[:id])  
   end
 
   def create
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.my_recipes.find(params[:recipe_id])
     @step = @recipe.steps.new(step_params)
+    redirect_to recipe_path(@recipe)
 
     if @step.save
       flash[:notice] = 'Step successfully created'
     else
       flash[:alert] = 'Step could not be created'
     end
-    redirect_to recipe_path(@recipe)
   end
 
   def update
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.my_recipes.find(params[:recipe_id])
     @step = @recipe.steps.find(params[:id])
     redirect_to recipe_path(@recipe)
-
     if @step.update(step_params)
       flash[:notice] = 'Step successfully updated'
     else
@@ -33,7 +32,7 @@ class StepsController < ApplicationController
   end
 
   def destroy
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.my_recipes.find(params[:recipe_id])
     @step = @recipe.steps.find(params[:id])
     @step.destroy
     redirect_to recipe_path(@recipe)

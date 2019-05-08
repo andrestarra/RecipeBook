@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :menu do
-    sequence(:name) {|n| " name menu #{n}" }
+    sequence(:name) {|n| "name menu #{n}" }
     type_menu { "MyString" }
 
     trait :invalid do

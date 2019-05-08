@@ -76,18 +76,115 @@ RSpec.describe StepsController, type: :controller do
 
       it 'updates a step' do
         step_params = attributes_for(:step, :new_operation)
-        patch :update, params: { id: @recipe.id, step: step_params }
+        patch :update, params: { recipe_id: @recipe.id, id: @step.id, step: step_params }
         expect(@step.reload.operation).to eq 'NewOperation'
       end
 
-      it 'can not update a recipe' do
-        recipe_params = attributes_for(:recipe, :invalid)
-        patch :update, params: { id: @recipe.id, recipe: recipe_params }
-        expect(@recipe.reload.source).to eq @recipe.source
+      it 'can not update a step' do
+        step_params = attributes_for(:step, :invalid)
+        patch :update, params: { recipe_id: @recipe.id, id: @step.id, step: step_params }
+        expect(@step.reload.operation).to eq @step.operation
+      end
+    end
+
+    context 'as an unauthorized user' do
+      before do
+        @user = create(:user)
+        other_user = create(:user)
+        @menu = create(:menu, user_id: @user.id)
+        @plate = create(:plate, user_id: other_user.id, menu_id: @menu.id)
+        @recipe = create(:recipe, user_id: other_user.id, plate_id: @plate.id)
+        @step = create(:step, recipe_id: @recipe.id)
+        sign_in @user
+      end
+
+      it 'does not update the step' do
+        step_params = attributes_for(:step, :new_operation)
+        expect{ patch :update, params: { recipe_id: @recipe.id, id: @step.id, step: step_params } }
+          .to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context 'as a guest' do
+      before do
+        @user = create(:user)
+        @menu = create(:menu, user_id: @user.id)
+        @plate = create(:plate, user_id: @user.id, menu_id: @menu.id)
+        @recipe = create(:recipe, user_id: @user.id, plate_id: @plate.id)
+        @step = create(:step, recipe_id: @recipe.id)
+      end
+
+      it 'returns a 302 response' do
+        step_params = attributes_for(:step)
+        patch :update, params: { recipe_id: @recipe.id, id: @step.id, step: step_params }
+        expect(response).to have_http_status '302'
+      end
+
+      it 'redirects to the sign-in page' do
+        step_params = attributes_for(:step)
+        patch :update, params: { recipe_id: @recipe.id, id: @step.id, step: step_params }
+        expect(response).to redirect_to '/users/sign_in'
       end
     end
   end
 
   describe '#destroy' do
+    context 'as an authorized user' do
+      before do
+        @user = create(:user)
+        @menu = create(:menu, user_id: @user.id)
+        @plate = create(:plate, user_id: @user.id, menu_id: @menu.id)
+        @recipe = create(:recipe, user_id: @user.id, plate_id: @plate.id)
+        @step = create(:step, recipe_id: @recipe.id)
+        sign_in @user
+      end
+
+      it 'deletes a step' do
+        expect { delete :destroy, params: { recipe_id: @recipe.id, id: @step.id } }
+          .to change(@recipe.steps, :count).by(-1)
+      end
+    end
+
+    context 'as an unauthorized user' do
+      before do
+        @user = create(:user)
+        other_user = create(:user)
+        @menu = create(:menu, user_id: @user.id)
+        @plate = create(:plate, user_id: other_user.id, menu_id: @menu.id)
+        @recipe = create(:recipe, user_id: other_user.id, plate_id: @plate.id)
+        @step = create(:step, recipe_id: @recipe.id)
+        sign_in @user
+      end
+
+      it 'does not delete the step' do
+        expect { delete :destroy, params: { recipe_id: @recipe.id, id: @step.id } }
+          .to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context 'as a guest' do
+      before do
+        @user = create(:user)
+        @menu = create(:menu, user_id: @user.id)
+        @plate = create(:plate, user_id: @user.id, menu_id: @menu.id)
+        @recipe = create(:recipe, user_id: @user.id, plate_id: @plate.id)
+        @step = create(:step, recipe_id: @recipe.id)
+      end
+
+      it 'returns a 302 response' do
+        delete :destroy, params: { recipe_id: @recipe.id, id: @step.id }
+        expect(response).to have_http_status '302'
+      end
+
+      it 'redirects to the sign-in page' do
+        delete :destroy, params: { recipe_id: @recipe.id, id: @step.id }
+        expect(response).to redirect_to '/users/sign_in'
+      end
+
+      it 'does not delete the step' do
+        expect { delete :destroy, params: { recipe_id: @recipe.id, id: @step.id } }
+          .to_not change(Step, :count)
+      end
+    end
   end
 end

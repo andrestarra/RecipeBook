@@ -214,7 +214,7 @@ RSpec.describe RecipesController, type: :controller do
 
       it 'returns a 302 response' do
         recipe_params = attributes_for(:recipe)
-        patch :update, params: { id: @recipe.id, plate: recipe_params }
+        patch :update, params: { id: @recipe.id, recipe: recipe_params }
         expect(response).to have_http_status '302'
       end
 
