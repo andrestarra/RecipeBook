@@ -18,3 +18,11 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+var collection = document.getElementById('utensilSelect');
+var selected = collection[collection.selectedIndex].value;
+for (var i = 0; i < collection.length; i++){
+  if (collection.options.item(i) == selected) {
+    collection.remove(i);
+  }
+}

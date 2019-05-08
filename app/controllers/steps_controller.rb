@@ -11,7 +11,7 @@ class StepsController < ApplicationController
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.new(step_params)
-    
+
     if @step.save
       flash[:notice] = 'Step successfully created'
     else
@@ -23,13 +23,13 @@ class StepsController < ApplicationController
   def update
     @recipe = Recipe.find(params[:recipe_id])
     @step = @recipe.steps.find(params[:id])
-  
+    redirect_to recipe_path(@recipe)
+
     if @step.update(step_params)
       flash[:notice] = 'Step successfully updated'
     else
       flash[:alert] = 'Step could not be updated'
     end
-    redirect_to recipe_path(@recipe)
   end
 
   def destroy

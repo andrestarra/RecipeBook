@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-05-06T16:16:39-05:00">2019-05-06T16:16:39-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-05-07T17:36:37-05:00">2019-05-07T17:36:37-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">88.29%</span></span>
+    (<span class="covered_percent"><span class="yellow">84.51%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.96
+         0.94
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>40</b> files in total.
-    <b>222</b> relevant lines. 
-    <span class="green"><b>196</b> lines covered</span> and
-    <span class="red"><b>26</b> lines missed </span>
+    <b>226</b> relevant lines. 
+    <span class="green"><b>191</b> lines covered</span> and
+    <span class="red"><b>35</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,22 +52,22 @@
       
       <tr>
         <td class="strong"><a href="#f1cdad52a310a05ac8fc09e55b529ac8595e3504" class="src_link" title="app/controllers/application_controller.rb">app/controllers/application_controller.rb</a></td>
-        <td class="red strong">63.64 %</td>
+        <td class="red strong">54.55 %</td>
         <td>22</td>
         <td>11</td>
-        <td>7</td>
-        <td>4</td>
-        <td>0.6</td>
+        <td>6</td>
+        <td>5</td>
+        <td>0.5</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#04c1cb2cf72b0939f4c90b1fe390e2b492eb4341" class="src_link" title="app/controllers/steps_controller.rb">app/controllers/steps_controller.rb</a></td>
-        <td class="red strong">51.85 %</td>
-        <td>52</td>
-        <td>27</td>
-        <td>14</td>
-        <td>13</td>
-        <td>0.5</td>
+        <td class="red strong">27.59 %</td>
+        <td>53</td>
+        <td>29</td>
+        <td>8</td>
+        <td>21</td>
+        <td>0.3</td>
       </tr>
       
       <tr>
@@ -193,7 +193,7 @@
       <tr>
         <td class="strong"><a href="#4798a0af37f0e51d3621117bd78046952e13083a" class="src_link" title="app/models/step.rb">app/models/step.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>13</td>
+        <td>17</td>
         <td>8</td>
         <td>8</td>
         <td>0</td>
@@ -403,11 +403,11 @@
       <tr>
         <td class="strong"><a href="#bfbc6501b11b8fcbf56c7de0adeb8f8484a526d7" class="src_link" title="spec/factories/steps.rb">spec/factories/steps.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>11</td>
-        <td>7</td>
-        <td>7</td>
+        <td>15</td>
+        <td>9</td>
+        <td>9</td>
         <td>0</td>
-        <td>1.4</td>
+        <td>1.7</td>
       </tr>
       
       <tr>
@@ -469,11 +469,11 @@
         <div class="source_table" id="f1cdad52a310a05ac8fc09e55b529ac8595e3504">
   <div class="header">
     <h3>app/controllers/application_controller.rb</h3>
-    <h4><span class="red">63.64 %</span> covered</h4>
+    <h4><span class="red">54.55 %</span> covered</h4>
     <div>
       <b>11</b> relevant lines. 
-      <span class="green"><b>7</b> lines covered</span> and
-      <span class="red"><b>4</b> lines missed.</span>
+      <span class="green"><b>6</b> lines covered</span> and
+      <span class="red"><b>5</b> lines missed.</span>
     </div>
   </div>
   
@@ -594,8 +594,8 @@
           <code class="ruby">  def set_current_user</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="20">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="20">
+          
           
           <code class="ruby">    Plate.current_user = current_user</code>
         </li>
@@ -620,11 +620,11 @@
         <div class="source_table" id="04c1cb2cf72b0939f4c90b1fe390e2b492eb4341">
   <div class="header">
     <h3>app/controllers/steps_controller.rb</h3>
-    <h4><span class="red">51.85 %</span> covered</h4>
+    <h4><span class="red">27.59 %</span> covered</h4>
     <div>
-      <b>27</b> relevant lines. 
-      <span class="green"><b>14</b> lines covered</span> and
-      <span class="red"><b>13</b> lines missed.</span>
+      <b>29</b> relevant lines. 
+      <span class="green"><b>8</b> lines covered</span> and
+      <span class="red"><b>21</b> lines missed.</span>
     </div>
   </div>
   
@@ -670,274 +670,280 @@
         <li class="missed" data-hits="0" data-linenumber="7">
           
           
-          <code class="ruby">    @step = Step.find(params[:id])  </code>
+          <code class="ruby">    @recipe = Recipe.find(params[:recipe_id])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="8">
+        <li class="missed" data-hits="0" data-linenumber="8">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    @step = Step.find(params[:id])  </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="9">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="10">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="10">
           
-          <code class="ruby">  def create</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="11">
           <span class="hits">1</span>
           
+          <code class="ruby">  def create</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="12">
+          
+          
           <code class="ruby">    @recipe = Recipe.find(params[:recipe_id])</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="12">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="13">
+          
           
           <code class="ruby">    @step = @recipe.steps.new(step_params)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="never" data-hits="" data-linenumber="14">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="14">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    if @step.save</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="15">
           
           
+          <code class="ruby">    if @step.save</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="16">
+          
+          
           <code class="ruby">      flash[:notice] = &#39;Step successfully created&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="never" data-hits="" data-linenumber="17">
           
           
           <code class="ruby">    else</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="17">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="18">
+          
           
           <code class="ruby">      flash[:alert] = &#39;Step could not be created&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="18">
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="19">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="20">
+          
           
           <code class="ruby">    redirect_to recipe_path(@recipe)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="20">
-          
-          
-          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="22">
+        <li class="covered" data-hits="1" data-linenumber="23">
           <span class="hits">1</span>
           
           <code class="ruby">  def update</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="23">
-          
-          
-          <code class="ruby">    @recipe = Recipe.find(params[:recipe_id])</code>
-        </li>
-      
         <li class="missed" data-hits="0" data-linenumber="24">
           
           
-          <code class="ruby">    @step = @recipe.steps.find(params[:id])</code>
+          <code class="ruby">    byebug</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="missed" data-hits="0" data-linenumber="25">
           
           
-          <code class="ruby">    </code>
+          <code class="ruby">    @recipe = Recipe.find(params[:recipe_id])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="26">
           
           
+          <code class="ruby">    @step = @recipe.steps.find(params[:id])</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="28">
+          
+          
           <code class="ruby">    if @step.update(step_params)</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="27">
-          
-          
-          <code class="ruby">      flash[:notice] = &#39;Step successfully updated&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="28">
-          
-          
-          <code class="ruby">    else</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="29">
           
           
-          <code class="ruby">      flash[:alert] = &#39;Step could not be updated&#39;</code>
+          <code class="ruby">      flash[:notice] = &#39;Step successfully updated&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="31">
+          
+          
+          <code class="ruby">      flash[:alert] = &#39;Step could not be updated&#39;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="32">
+          
+          
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="31">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="32">
+        <li class="missed" data-hits="0" data-linenumber="33">
           
           
           <code class="ruby">    redirect_to recipe_path(@recipe)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="33">
-          
-          
-          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
           
           
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="35">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="35">
+        <li class="covered" data-hits="1" data-linenumber="36">
           <span class="hits">1</span>
           
           <code class="ruby">  def destroy</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="36">
+        <li class="missed" data-hits="0" data-linenumber="37">
           
           
           <code class="ruby">    @recipe = Recipe.find(params[:recipe_id])</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="37">
+        <li class="missed" data-hits="0" data-linenumber="38">
           
           
           <code class="ruby">    @step = @recipe.steps.find(params[:id])</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="38">
+        <li class="missed" data-hits="0" data-linenumber="39">
           
           
           <code class="ruby">    @step.destroy</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="39">
+        <li class="missed" data-hits="0" data-linenumber="40">
           
           
           <code class="ruby">    redirect_to recipe_path(@recipe)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="40">
+        <li class="missed" data-hits="0" data-linenumber="41">
           
           
           <code class="ruby">    flash[:error] = &#39;Step successfully destroyed&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="43">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="43">
+        <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
           <code class="ruby">  private</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="45">
+        <li class="covered" data-hits="1" data-linenumber="46">
           <span class="hits">1</span>
           
           <code class="ruby">  def step_params</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="46">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="47">
+          
           
           <code class="ruby">    params.require(:step).permit(</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="47">
-          
-          
-          <code class="ruby">      :operation, :expected_minutes, :comment,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="48">
           
           
-          <code class="ruby">      uses_attributes: %i[id quantity measure step_id ingredient_id _destroy],</code>
+          <code class="ruby">      :operation, :expected_minutes, :comment,</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="49">
           
           
-          <code class="ruby">      utilities_attributes: %i[id step_id utensil_id _destroy]</code>
+          <code class="ruby">      uses_attributes: %i[id quantity measure step_id ingredient_id _destroy],</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="50">
           
           
-          <code class="ruby">    )</code>
+          <code class="ruby">      utilities_attributes: %i[id step_id utensil_id _destroy]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    )</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="52">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
           
           
           <code class="ruby">end</code>
@@ -1913,13 +1919,13 @@
         <li class="covered" data-hits="1" data-linenumber="8">
           <span class="hits">1</span>
           
-          <code class="ruby">  accepts_nested_attributes_for :uses, reject_if: :all_blank, allow_destroy: true</code>
+          <code class="ruby">  accepts_nested_attributes_for :uses, :utilities,</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="9">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="9">
           
-          <code class="ruby">  accepts_nested_attributes_for :utilities, reject_if: :all_blank, allow_destroy: true</code>
+          
+          <code class="ruby">                                reject_if: :all_blank, allow_destroy: true</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="10">
@@ -1928,19 +1934,43 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="11">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="11">
           
-          <code class="ruby">  validates :operation, presence: true, length: { minimum: 3 }</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="12">
           <span class="hits">1</span>
           
+          <code class="ruby">  validates :operation, presence: true, length: { minimum: 3 }</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="13">
+          <span class="hits">1</span>
+          
           <code class="ruby">  validates :expected_minutes, numericality: { greater_than: 0, less_than: 60 }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="15">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="16">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="17">
           
           
           <code class="ruby">end</code>
@@ -5708,8 +5738,8 @@
     <h3>spec/factories/steps.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>7</b> relevant lines. 
-      <span class="green"><b>7</b> lines covered</span> and
+      <b>9</b> relevant lines. 
+      <span class="green"><b>9</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -5735,14 +5765,14 @@
           <code class="ruby">    operation { &quot;MyString&quot; }</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="4">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="4">
+          <span class="hits">3</span>
           
-          <code class="ruby">    schedule_time { 30.0 }</code>
+          <code class="ruby">    expected_minutes { 30.0 }</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="5">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="5">
+          <span class="hits">3</span>
           
           <code class="ruby">    comment { &quot;MyString&quot; }</code>
         </li>
@@ -5774,10 +5804,34 @@
         <li class="never" data-hits="" data-linenumber="10">
           
           
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    trait :new_operation do</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="12">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      operation { &quot;NewOperation&quot; }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="13">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="14">
+          
+          
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="11">
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby">end</code>
