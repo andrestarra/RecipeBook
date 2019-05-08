@@ -73,8 +73,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Added gems
 gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'jquery-rails'
 gem 'link_to_add_fields'
+gem 'rails_admin', '~> 1.3'
 gem 'rubocop-performance'
 gem 'simplecov', require: false, group: :test

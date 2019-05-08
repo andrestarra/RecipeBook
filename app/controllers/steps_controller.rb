@@ -5,7 +5,7 @@ class StepsController < ApplicationController
   before_action :authenticate_user!
   def edit
     @recipe = Recipe.my_recipes.find(params[:recipe_id])
-    @step = Step.find(params[:id])  
+    @step = Step.find(params[:id])
   end
 
   def create
