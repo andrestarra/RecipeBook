@@ -33,7 +33,29 @@
     Add a Step
   </button>
 
+  <!-- modal from add step -->
+  <div class="modal fade" id='<%= "step_modal" %>' tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">Add a Step</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render 'steps/form' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <%= link_to 'Back', recipes_path, class: 'btn btn-secondary btn-sm' %>
+<% else %>
+  <%= link_to 'Back', root_path, class: 'btn btn-secondary btn-sm' %>
 <% end %>
 
 <h2>Steps</h2>
@@ -45,6 +67,8 @@
       <th>Comment</th>
       <% if user_signed_in? %>
         <th colspan='2'></th>
+      <% else %>
+        <th colspan='1'></th>
       <% end %>
     </tr>
   </thead>
@@ -53,22 +77,3 @@
     <%= render @recipe.steps.order(:id) %>
   </tbody>
 </table>
-
-<div class="modal fade" id='<%= "step_modal" %>' tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ModalLabel">Add a Step</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render 'steps/form' %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
