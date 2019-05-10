@@ -7,11 +7,12 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :ingredients
   has_many :utensils
-
-  validates :name, :email, :password, presence: true
+  
+  validates :name, :password, presence: true
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :trackable
-  devise :database_authenticatable, :registerable, :recoverable,
+  # :lockable, :timeoutable and :trackable
+  devise :database_authenticatable, :registerable, :recoverable, :confirmable,
          :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2]
 
   def self.from_omniauth(access_token)
