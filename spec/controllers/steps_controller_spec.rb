@@ -9,6 +9,7 @@ RSpec.describe StepsController, type: :controller do
       @recipe = create(:recipe, user_id: @user.id, plate_id: @plate.id)
       @step = create(:step, recipe_id: @recipe.id)
       sign_in @user
+      @user.confirm
     end
 
     it 'render edit template' do
@@ -35,6 +36,7 @@ RSpec.describe StepsController, type: :controller do
         @plate = create(:plate, user_id: @user.id, menu_id: @menu.id)
         @recipe = create(:recipe, user_id: @user.id, plate_id: @plate.id)
         sign_in @user
+        @user.confirm
       end
 
       context 'with valid attributes' do
@@ -72,6 +74,7 @@ RSpec.describe StepsController, type: :controller do
         @recipe = create(:recipe, user_id: @user.id, plate_id: @plate.id)
         @step = create(:step, recipe_id: @recipe.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'updates a step' do
@@ -96,6 +99,7 @@ RSpec.describe StepsController, type: :controller do
         @recipe = create(:recipe, user_id: other_user.id, plate_id: @plate.id)
         @step = create(:step, recipe_id: @recipe.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'does not update the step' do
@@ -137,6 +141,7 @@ RSpec.describe StepsController, type: :controller do
         @recipe = create(:recipe, user_id: @user.id, plate_id: @plate.id)
         @step = create(:step, recipe_id: @recipe.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'deletes a step' do
@@ -154,6 +159,7 @@ RSpec.describe StepsController, type: :controller do
         @recipe = create(:recipe, user_id: other_user.id, plate_id: @plate.id)
         @step = create(:step, recipe_id: @recipe.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'does not delete the step' do

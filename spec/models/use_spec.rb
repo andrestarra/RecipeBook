@@ -6,5 +6,4 @@ RSpec.describe Use, type: :model do
   it { should validate_length_of(:measure).is_at_most(10) }
   it { should belong_to(:step) }
   it { should belong_to(:ingredient) }
-  xit { should validate_uniqueness_of(:step_id).scoped_to(:ingredient_id) }
 end

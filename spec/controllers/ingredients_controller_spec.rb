@@ -6,6 +6,7 @@ RSpec.describe IngredientsController, type: :controller do
       before do
         @user = create(:user)
         sign_in @user
+        @user.confirm
       end
       
       it 'responds successfully' do
@@ -47,6 +48,7 @@ RSpec.describe IngredientsController, type: :controller do
         @user = create(:user)
         @ingredient = create(:ingredient, user_id: @user.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'responds successfully' do
@@ -66,6 +68,7 @@ RSpec.describe IngredientsController, type: :controller do
         other_user = create(:user)
         @ingredient = create(:ingredient, user_id: other_user.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'record not found to unauthorized user' do
@@ -79,6 +82,7 @@ RSpec.describe IngredientsController, type: :controller do
     before do
       @user = create(:user)
       sign_in @user
+      @user.confirm
     end
 
     it 'render the new template' do
@@ -97,6 +101,7 @@ RSpec.describe IngredientsController, type: :controller do
       @user = create(:user)
       @ingredient = create(:ingredient, user_id: @user.id)
       sign_in @user
+      @user.confirm
     end
 
     it 'render edit template' do
@@ -120,6 +125,7 @@ RSpec.describe IngredientsController, type: :controller do
       before do
         @user = create(:user)
         sign_in @user
+        @user.confirm
       end
 
       context 'with valid attributes' do
@@ -160,6 +166,7 @@ RSpec.describe IngredientsController, type: :controller do
         @user = create(:user)
         @ingredient = create(:ingredient, user_id: @user.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'updates an ingredient' do
@@ -181,6 +188,7 @@ RSpec.describe IngredientsController, type: :controller do
         other_user = create(:user)
         @ingredient = create(:ingredient, user_id: other_user.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'does not update the ingredient' do
@@ -216,6 +224,7 @@ RSpec.describe IngredientsController, type: :controller do
         @user = create(:user)
         @ingredient = create(:ingredient, user_id: @user.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'deletes an ingredient' do
@@ -230,6 +239,7 @@ RSpec.describe IngredientsController, type: :controller do
         other_user = create(:user)
         @ingredient = create(:ingredient, user_id: other_user.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'does not delete the ingredient' do

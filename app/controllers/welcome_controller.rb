@@ -15,9 +15,7 @@ class WelcomeController < ApplicationController
   private
 
   def only_unlogged
-    if user_signed_in?
-      flash[:error] = "You haven't access to this url"
-      redirect_to root_path
-    end
+    flash[:error] = "You haven't access to this url" if user_signed_in?
+    redirect_to root_path
   end
 end

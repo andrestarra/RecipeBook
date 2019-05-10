@@ -7,6 +7,7 @@ RSpec.describe PlatesController, type: :controller do
         @user = create(:user)
         @menu = create(:menu, user_id: @user.id)
         sign_in @user
+        @user.confirm
       end
       
       it 'responds successfully' do
@@ -49,6 +50,7 @@ RSpec.describe PlatesController, type: :controller do
         @menu = create(:menu, user_id: @user.id)
         @plate = create(:plate, user_id: @user.id, menu_id: @menu.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'responds successfully' do
@@ -69,6 +71,7 @@ RSpec.describe PlatesController, type: :controller do
         @menu = create(:menu, user_id: @user.id)
         @plate = create(:plate, user_id: other_user.id, menu_id: @menu.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'record not found to unauthorized user' do
@@ -82,6 +85,7 @@ RSpec.describe PlatesController, type: :controller do
     before do
       @user = create(:user)
       sign_in @user
+      @user.confirm
     end
 
     it 'render the new template' do
@@ -101,6 +105,7 @@ RSpec.describe PlatesController, type: :controller do
       @menu = create(:menu, user_id: @user.id)
       @plate = create(:plate, user_id: @user.id, menu_id: @menu.id)
       sign_in @user
+      @user.confirm
     end
 
     it 'render edit template' do
@@ -125,6 +130,7 @@ RSpec.describe PlatesController, type: :controller do
         @user = create(:user)
         @menu = create(:menu, user_id: @user.id)
         sign_in @user
+        @user.confirm
       end
 
       context 'with valid attributes' do
@@ -166,6 +172,7 @@ RSpec.describe PlatesController, type: :controller do
         @menu = create(:menu, user_id: @user.id)
         @plate = create(:plate, user_id: @user.id, menu_id: @menu.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'updates an plate' do
@@ -188,6 +195,7 @@ RSpec.describe PlatesController, type: :controller do
         @menu = create(:menu, user_id: @user.id)
         @plate = create(:plate, user_id: other_user.id, menu_id: @menu.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'does not update the plate' do
@@ -225,6 +233,7 @@ RSpec.describe PlatesController, type: :controller do
         @menu = create(:menu, user_id: @user.id)
         @plate = create(:plate, user_id: @user.id, menu_id: @menu.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'deletes an plate' do
@@ -240,6 +249,7 @@ RSpec.describe PlatesController, type: :controller do
         @menu = create(:menu, user_id: @user.id)
         @plate = create(:plate, user_id: other_user.id, menu_id: @menu.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'does not delete the plate' do

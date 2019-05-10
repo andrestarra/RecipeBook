@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :ingredients
   has_many :utensils
-  
+
   validates :name, :password, presence: true
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   # Include default devise modules. Others available are:
@@ -18,9 +18,9 @@ class User < ApplicationRecord
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data[:email]).first
-
     user ||= User.create(name: data['name'],
                          email: data['email'],
                          password: Devise.friendly_token[0, 20])
+    user
   end
 end

@@ -6,6 +6,8 @@ RSpec.describe MenusController, type: :controller do
       before do
         @user = create(:user)
         sign_in @user
+        @user.confirm
+        @user.confirm
       end
       
       it 'responds successfully' do
@@ -47,6 +49,7 @@ RSpec.describe MenusController, type: :controller do
         @user = create(:user)
         @menu = create(:menu, user_id: @user.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'responds successfully' do
@@ -66,6 +69,7 @@ RSpec.describe MenusController, type: :controller do
         other_user = create(:user)
         @menu = create(:menu, user_id: other_user.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'record not found to unauthorized user' do
@@ -79,6 +83,7 @@ RSpec.describe MenusController, type: :controller do
     before do
       @user = create(:user)
       sign_in @user
+      @user.confirm
     end
 
     it 'render the new template' do
@@ -97,6 +102,7 @@ RSpec.describe MenusController, type: :controller do
       @user = create(:user)
       @menu = create(:menu, user_id: @user.id)
       sign_in @user
+      @user.confirm
     end
 
     it 'render edit template' do
@@ -120,6 +126,7 @@ RSpec.describe MenusController, type: :controller do
       before do
         @user = create(:user)
         sign_in @user
+        @user.confirm
       end
 
       context 'with valid attributes' do
@@ -160,6 +167,7 @@ RSpec.describe MenusController, type: :controller do
         @user = create(:user)
         @menu = create(:menu, user_id: @user.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'updates an menu' do
@@ -181,6 +189,7 @@ RSpec.describe MenusController, type: :controller do
         other_user = create(:user)
         @menu = create(:menu, user_id: other_user.id)
         sign_in @user
+        @user.confirm
       end
 
       it 'does not update the menu' do
@@ -215,6 +224,7 @@ RSpec.describe MenusController, type: :controller do
           @user = create(:user)
           @menu = create(:menu, user_id: @user.id)
           sign_in @user
+          @user.confirm
         end
   
         it 'deletes an menu' do
@@ -229,6 +239,7 @@ RSpec.describe MenusController, type: :controller do
           other_user = create(:user)
           @menu = create(:menu, user_id: other_user.id)
           sign_in @user
+          @user.confirm
         end
   
         it 'does not delete the menu' do
