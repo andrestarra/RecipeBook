@@ -17,8 +17,8 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= render partial: "uses_table", locals: { step: step }%>  
-            <%= render partial: "utilities_table", locals: { step: step } %>
+            <%= render partial: "recipes/uses_table", locals: { step: step }%>  
+            <%= render partial: "recipes/utilities_table", locals: { step: step } %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -29,11 +29,14 @@
   </td>
   <% if user_signed_in? %>
     <td><%= link_to 'Edit', edit_recipe_step_path(@recipe, step), class: 'btn btn-success btn-sm' %></td>
-    <td>
-    <% if @recipe.steps.last.id == step.id %>
-      <%= link_to 'Destroy', [step.recipe, step], class: 'btn btn-danger btn-sm',
-                method: :delete,
-                data: { confirm: 'Are you sure' } %></td>
+    <% if @recipe.steps.last == step %>
+      <td>
+        <%= link_to 'Destroy', [step.recipe, step], class: 'btn btn-danger btn-sm',
+                    method: :delete,
+                    data: { confirm: 'Are you sure' } %>
+      </td>
+    <% else %>
+      <td></td>
     <% end %>
   <% end %>
 </tr>
