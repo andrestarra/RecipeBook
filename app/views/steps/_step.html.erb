@@ -17,8 +17,8 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= render step.uses %>
-            <%= render step.utilities %>
+            <%= render partial: "uses_table", locals: { step: step }%>  
+            <%= render partial: "utilities_table", locals: { step: step } %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
