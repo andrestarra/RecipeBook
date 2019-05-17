@@ -1,51 +1,11 @@
-<%= form_with model: @plate, local: true do |form| %>
-  <% if @plate.errors.any? %>
-    <div id='error_explanation'>
-      <h2>
-        <%= pluralize(@plate.errors.count, 'error') %>
-      prohibited
-        this plate from being saved:
-      </h2>
-      <ul>
-        <% @plate.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li> 
-        <% end %>
-      </ul>
-    </div>
+<div class="w-50 pb-2">
+  <%= simple_form_for @plate do |form| %>
+    <%= form.input :name %>
+    <%= form.input :main_ingredient %>
+    <%= form.input :type_plate %>
+    <%= form.input :price %>
+    <%= form.input :comment %>
+    <%= form.association :menu, collection: Menu.my_menus, label_method: :menu_and_type%>
+    <%= form.button :submit, class: 'btn btn-info' %>
   <% end %>
-
-  <div class='form-group w-50'>
-    <%= form.label :name %>
-    <%= form.text_field :name, required: true, class: 'form-control' %>
-  </div>
-
-  <div class='form-group w-50'>
-    <%= form.label :main_ingredient %>
-    <%= form.text_field :main_ingredient, required: true, class: 'form-control' %>
-  </div>
-
-  <div class='form-group w-50'>
-    <%= form.label :type_of_plate %>
-    <%= form.text_field :type_plate, required: true, class: 'form-control' %>
-  </div>
-
-  <div class='form-group w-50'>
-    <%= form.label :price %>
-    <%= form.number_field :price, step: :any, required: true, class: 'form-control' %>
-  </div>
-
-  <div class='form-group w-50'>
-    <%= form.label :comment %>
-    <%= form.text_area :comment, class: 'form-control' %>
-  </div>
-
-  <div class='form-group w-50'>
-    <%= form.label :menu %>
-    <%= form.collection_select(:menu_id, Menu.my_menus, :id, :menu_and_type,
-                              { prompt: true }, { class: 'form-control' }) %>
-  </div>
-
-  <div class='form-group w-50'>
-    <%= form.submit 'Save', class: 'btn btn-info form-control' %>
-  </div>
-<% end %>
+</div>

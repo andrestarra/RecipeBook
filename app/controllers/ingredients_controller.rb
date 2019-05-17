@@ -24,7 +24,6 @@ class IngredientsController < ApplicationController
     @ingredient.user_id = current_user.id
 
     if @ingredient.save
-      redirect_to @ingredient
       flash[:notice] = 'Ingredient successfully created'
     else
       render 'new'

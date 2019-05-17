@@ -2,7 +2,7 @@
 
 # Utensil model
 class Utensil < ApplicationRecord
-  has_many :utilities
+  has_many :utilities, dependent: :destroy
   belongs_to :user
 
   validates :name, presence: true, length: { in: 3..20 }, uniqueness: { scope: :user_id }

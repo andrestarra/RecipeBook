@@ -14,23 +14,43 @@
     <%= form.text_area :comment, class: 'form-control' %>
   </div>
 
-  <table class='table'>
-    <tbody>
-      <tr>
-        <%= form.fields_for :uses do |ff| %>
-          <td><%= render partial: 'use_fields', locals: { f: ff } %></td>
-        <% end %>
+  <div class="form-group">
+    <table class='table'>
+      <tbody>
+        <tr>
+          <%= form.fields_for :uses do |ff| %>
+            <td><%= render partial: 'use_fields', locals: { f: ff } %></td>
+          <% end %>
 
-        <%= form.fields_for :utilities do |ff| %>
-          <td><%= render partial: 'utility_fields', locals: { f: ff } %></td>
-        <% end %>
-      </tr>
-      <tr>
-        <td><%= link_to_add_fields('Add an ingredient', form, :uses, class: 'btn btn-primary btn-sm') %></td>
-        <td><%= link_to_add_fields('Add an utensil', form, :utilities, class: 'btn btn-primary btn-sm') %></td>
-      </tr>
-    </tbody>  
-  </table>
+          <%= form.fields_for :utilities do |ff| %>
+            <td><%= render partial: 'utility_fields', locals: { f: ff } %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td id='ingredient_cell'>
+            <%= link_to "New Ingredient", "#collapseIngredient", 'data-toggle': "collapse", class: "btn btn-success form-control" %>
+            <div class="collapse" id="collapseIngredient">
+              <div class="card card-body">
+                <%= render partial: "ingredients/form" %>
+              </div>
+            </div>
+          </td>
+          <td id='utensil_cell'>
+            <%= link_to "New Utensil", "#collapseUtensil", 'data-toggle': "collapse", class: "btn btn-success form-control" %>
+            <div class="collapse" id="collapseUtensil">
+              <div class="card card-body">
+                <%= render partial: "utensils/form" %>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><%= link_to_add_fields('Add Ingredient', form, :uses, class: 'btn btn-primary btn-sm form-control', id: 'add_ingredient') %></td>
+          <td><%= link_to_add_fields('Add Utensil', form, :utilities, class: 'btn btn-primary btn-sm form-control', id: 'add_utensil') %></td>
+        </tr>
+      </tbody>  
+    </table>
+  </div>
   
   <div class='form-group'>
     <%= form.submit 'Save Step', class: 'btn btn-info form-control' %>

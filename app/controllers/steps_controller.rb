@@ -10,13 +10,19 @@ class StepsController < ApplicationController
 
   def create
     @recipe = Recipe.my_recipes.find(params[:recipe_id])
-    @step = @recipe.steps.new(step_params)
-    redirect_to recipe_path(@recipe)
-
-    if @step.save
-      flash[:notice] = 'Step successfully created'
-    else
-      flash[:alert] = 'Step could not be created'
+    begin
+      @step = @recipe.steps.new(step_params)
+      redirect_to recipe_path(@recipe)
+      if @step.save
+        flash[:notice] = 'Step successfully created'
+      else
+        flash[:alert] = 'Step could not be created'
+      end
+    rescue ActiveRecord::NestedAttributes::TooManyRecords
+      redirect_to recipe_path(@recipe)
+      flash[:error] = 'Too many records'
+    rescue ActiveRecord::RecordNotUnique
+      flash[:error] = 'Duplicate key value violates unique constraint'
     end
   end
 

@@ -2,7 +2,7 @@
 
 # Ingredient model
 class Ingredient < ApplicationRecord
-  has_many :uses
+  has_many :uses, dependent: :destroy
   belongs_to :user
 
   validates :name, presence: true, length: { in: 3..20 }, uniqueness: { scope: :user_id }

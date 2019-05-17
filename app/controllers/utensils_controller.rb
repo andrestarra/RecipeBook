@@ -2,7 +2,10 @@
 
 # Utensils controller
 class UtensilsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:create]
   before_action :authenticate_user!
+  
+
   def index
     @utensils = Utensil.my_utensils
   end
@@ -22,12 +25,18 @@ class UtensilsController < ApplicationController
   def create
     @utensil = Utensil.new(utensil_params)
     @utensil.user_id = current_user.id
-
+    
     if @utensil.save
-      redirect_to @utensil
+      respond_to do |format|
+        format.json { render json: { utensil: @utensil } }
+        format.html { redirect_to @utensil }
+      end
       flash[:notice] = 'Utensil successfully created'
     else
-      render 'new'
+      respond_to do |format|
+        format.json { render json: { utensil_error: @utensil.errors.full_messages }, status: 422 }
+        format.html { render 'new' }
+      end
       flash[:alert] = 'Utensil could not be created'
     end
   end

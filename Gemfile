@@ -80,3 +80,4 @@ gem 'omniauth-google-oauth2'
 gem 'rails_admin', '~> 1.3'
 gem 'rubocop-performance'
 gem 'simplecov', require: false, group: :test
+gem 'simple_form'

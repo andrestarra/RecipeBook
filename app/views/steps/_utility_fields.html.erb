@@ -3,7 +3,7 @@
     <div class='form-group'>
       <%= f.label :utensil %><br>
       <%= f.collection_select(:utensil_id, Utensil.my_utensils, :id, :name,
-                              { prompt: true }, { class: 'form-control', id: 'utensilSelect' }) %>
+                              { prompt: true }, { class: 'form-control utensil_select' }) %>
     </div>
 
     <div class='form-group'>

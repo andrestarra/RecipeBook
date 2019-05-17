@@ -1,25 +1,6 @@
-<%= form_with model: @utensil, local: true do |form| %>
-  <% if @utensil.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@utensil.errors.count, "error") %>
-      prohibited
-        this utensil from being saved:
-      </h2>
-      <ul>
-        <% @utensil.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li> 
-        <% end %>
-      </ul>
-    </div>
+<div class="w-50 pb-2">
+  <%= simple_form_for @utensil do |form| %>
+    <%= form.input :name, id: 'utensil_name' %>
+    <%= form.button :submit, class: 'btn btn-info', id: 'create_utensil' %>
   <% end %>
-
-  <div class='form-group w-50'>
-    <%= form.label :name %>
-    <%= form.text_field :name, required: true, class: 'form-control' %>
-  </div>
-
-  <div class='form-group w-50'>
-    <%= form.submit 'Save', class: 'btn btn-info form-control' %>
-  </div>
-<% end %>
+</div>

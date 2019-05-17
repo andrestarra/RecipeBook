@@ -1,30 +1,7 @@
-<%= form_with model: @ingredient, local: true do |form| %>
-  <% if @ingredient.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= pluralize(@ingredient.errors.count, "error") %>
-        prohibited
-          this ingredient from being saved:
-        </h2>
-        <ul>
-          <% @ingredient.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li> 
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-  <div class='form-group w-50'>
-    <%= form.label :name %>
-    <%= form.text_field :name, required: true, class: 'form-control' %>
-  </div>
-
-  <div class='form-group w-50'>
-    <%= form.label :calories %>
-    <%= form.text_field :calories, class: 'form-control' %>
-  </div>
-
-  <div class='form-group w-50'>
-    <%= form.submit 'Save', class: 'btn btn-info form-control' %>
-  </div>
-<% end %>
+<div class="w-50 pb-2">
+  <%= simple_form_for @ingredient do |form| %>
+    <%= form.input :name %>
+    <%= form.input :calories, as: :numeric %>
+    <%= form.button :submit, class: 'btn btn-info' %>
+  <% end %>
+</div>
