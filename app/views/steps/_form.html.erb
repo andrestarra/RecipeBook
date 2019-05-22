@@ -27,7 +27,7 @@
           <% end %>
         </tr>
         <tr>
-          <td id='ingredient_cell'>
+          <td>
             <%= link_to "New Ingredient", "#collapseIngredient", 'data-toggle': "collapse", class: "btn btn-success form-control" %>
             <div class="collapse" id="collapseIngredient">
               <div class="card card-body">
@@ -35,7 +35,7 @@
               </div>
             </div>
           </td>
-          <td id='utensil_cell'>
+          <td>
             <%= link_to "New Utensil", "#collapseUtensil", 'data-toggle': "collapse", class: "btn btn-success form-control" %>
             <div class="collapse" id="collapseUtensil">
               <div class="card card-body">
@@ -45,8 +45,8 @@
           </td>
         </tr>
         <tr>
-          <td><%= link_to_add_fields('Add Ingredient', form, :uses, class: 'btn btn-primary btn-sm form-control', id: 'add_ingredient') %></td>
-          <td><%= link_to_add_fields('Add Utensil', form, :utilities, class: 'btn btn-primary btn-sm form-control', id: 'add_utensil') %></td>
+          <td><%= link_to_add_fields('Add Ingredient', form, :uses, class: 'btn btn-primary btn-sm form-control') %></td>
+          <td><%= link_to_add_fields('Add Utensil', form, :utilities, class: 'btn btn-primary btn-sm form-control') %></td>
         </tr>
       </tbody>  
     </table>

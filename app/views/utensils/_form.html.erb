@@ -1,6 +1,4 @@
-<div class="w-50 pb-2">
-  <%= simple_form_for @utensil do |form| %>
-    <%= form.input :name, id: 'utensil_name' %>
-    <%= form.button :submit, class: 'btn btn-info', id: 'create_utensil' %>
-  <% end %>
-</div>
+<%= simple_form_for @utensil, remote: true do |form| %>
+  <%= form.input :name, id: 'utensil_name' %>
+  <%= form.button :submit, class: 'btn btn-info', id: 'create_utensil' %>
+<% end %>

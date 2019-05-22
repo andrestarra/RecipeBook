@@ -54,6 +54,12 @@ RSpec.describe StepsController, type: :controller do
             .to_not change(Step, :count)
         end
       end
+
+      context 'set flash messages in the rescue' do
+        before { get :create }
+
+        it { should set_flash }
+      end
     end
 
     context 'as a guest' do

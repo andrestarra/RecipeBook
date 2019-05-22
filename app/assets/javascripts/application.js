@@ -19,6 +19,7 @@
 //= require_tree .
 
 $(document).ready(function() {
+  var utensils = "";
   $("#create_utensil").click(function(event) {
     var vname = $('#utensil_name').val();
     if (document.URL.indexOf('/recipes/') != -1) {
@@ -32,14 +33,10 @@ $(document).ready(function() {
           }
         },
         success: function(resp) {
+          utensils = resp;
           var utensil_id = resp.utensil.id;
           var utensil_name = resp.utensil.name;
           $('.utensil_select').append($('<option>', { value: utensil_id, text: utensil_name }));
-          $('#add_utensil').click(function() {
-            $('.utensil_select').append($('<option>', { value: utensil_id, text: utensil_name }));
-            $('.utensil_select').reload();
-            console.log($('.utensil_select'))
-          });
         },
         error: function(resp) {
           alert(resp.responseJSON.utensil_error)
@@ -47,4 +44,16 @@ $(document).ready(function() {
       });
     }
   });
+  
+  /*
+  $("#new_utensil").click(function() {
+  });
+  $('#add_utensil').click(function() {
+    $(utensils).each(function(index) {
+      var utensil_id = $(this)[index].utensil.id;
+      var utensil_name = $(this)[index].utensil.name;
+      console.log($('.utensil_select'))
+      $('.utensil_select').append($('<option>', { value: utensil_id, text: utensil_name }));
+    });
+  });*/
 });

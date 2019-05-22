@@ -1,6 +1,9 @@
-<h1>Utensils</h1>
+<h1 class="float-left">Utensils</h1>
 
-<table class='table table-hover table-striped table-sm'>
+<!-- Button trigger modal -->
+<%= button_modal_utensil("#modal_utensil", "New Utensil", "new_utensil") %>
+
+<table class='table table-hover table-striped table-sm' id="utensils">
   <thead>
     <tr>
       <th>Name</th>
@@ -9,17 +12,6 @@
   </thead>
 
   <tbody>
-    <% @utensils.each do |utensil| %>
-      <tr>
-        <td><%= utensil.name %></td>
-        <td><%= link_to 'Show', utensil_path(utensil), class: 'btn btn-success btn-sm' %></td>
-        <td><%= link_to 'Edit', edit_utensil_path(utensil), class: 'btn btn-secondary btn-sm' %></td>
-        <td><%= link_to 'Destroy', utensil_path(utensil), class: 'btn btn-danger btn-sm',
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render @utensils %>
   </tbody>
 </table>
-
-<%= link_to 'New Utensil', new_utensil_path, class: 'btn btn-info' %>
