@@ -26,8 +26,8 @@
 </div>
 <% unless user_signed_in? %>
   <div class="mt-3 w-50">
-    <h2>Last Recipes</h2>
     <% @recipes.each do |recipe| %>
+      <h2>Last Recipes</h2>
       <div class="card">
         <div class="card-body">
           <h5 class="card-title"><%= link_to "#{recipe.plate.name}", welcome_path(recipe) %></h5>

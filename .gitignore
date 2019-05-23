@@ -28,3 +28,6 @@
 
 # Addeds
 .DS_Store
+
+# Environment file
+.env

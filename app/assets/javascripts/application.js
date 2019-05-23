@@ -44,16 +44,4 @@ $(document).ready(function() {
       });
     }
   });
-  
-  /*
-  $("#new_utensil").click(function() {
-  });
-  $('#add_utensil').click(function() {
-    $(utensils).each(function(index) {
-      var utensil_id = $(this)[index].utensil.id;
-      var utensil_name = $(this)[index].utensil.name;
-      console.log($('.utensil_select'))
-      $('.utensil_select').append($('<option>', { value: utensil_id, text: utensil_name }));
-    });
-  });*/
 });
