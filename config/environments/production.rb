@@ -68,10 +68,11 @@ Rails.application.configure do
   # Setup the mailer config
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: 'whispering-reaches-60841.herokuapp.com' }
   config.action_mailer.smtp_settings = {
     user_name: ENV['SMTP_USERNAME'],
     password: ENV['SMTP_PASSWORD'],
-    domain: 'https://whispering-reaches-60841.herokuapp.com/',
+    domain: 'gmai.com',
     address: 'smtp.gmail.com',
     port: 587,
     authentication: :plain,
