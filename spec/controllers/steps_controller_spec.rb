@@ -44,6 +44,7 @@ RSpec.describe StepsController, type: :controller do
           step_params = attributes_for(:step).merge(recipe_id: @recipe.id)
           expect { post :create, params: { recipe_id: @recipe.id, step: step_params } }
             .to change(Step, :count).by(1)
+          should set_flash
         end
       end
 
@@ -52,13 +53,8 @@ RSpec.describe StepsController, type: :controller do
           step_params = attributes_for(:step, :invalid)
           expect { post :create, params: { recipe_id: @recipe.id, step: step_params } }
             .to_not change(Step, :count)
+          should set_flash
         end
-      end
-
-      context 'set flash messages in the rescue' do
-        before { get :create }
-
-        it { should set_flash }
       end
     end
 

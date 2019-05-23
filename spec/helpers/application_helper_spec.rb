@@ -44,4 +44,14 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.devise_mapping).to eq(@devise_mapping)
     end
   end
+
+  describe 'resource class' do
+    before do
+      @resource_class = helper.devise_mapping.to
+    end
+
+    it 'return the resource class' do
+      expect(helper.resource_class).to eq(@resource_class)
+    end
+  end
 end

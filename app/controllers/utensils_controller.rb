@@ -29,13 +29,12 @@ class UtensilsController < ApplicationController
     respond_to do |format|
       if @utensil.save
         format.json { render json: { utensil: @utensil } }
-        format.html { redirect_to @utensil, flash[:notice] = 'Utensil successfully created' }
-        format.js
+        format.html { redirect_to @utensil, notice: 'Utensil successfully created' }
       else
         format.json { render json: { utensil_error: @utensil.errors.full_messages } }
-        format.html { render 'new', flash[:alert] = 'Utensil could not be created' }
-        format.js
+        format.html { render 'new', alert: 'Utensil could not be created' }
       end
+      format.js
     end
   end
 
