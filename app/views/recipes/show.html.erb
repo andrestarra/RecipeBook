@@ -1,0 +1,81 @@
+<h1>Recipe</h1>
+
+<table class='table table-borderless table-hover w-50'>
+  <tbody>
+    <tr>
+      <th scope='row'>Plate:</th>
+      <td><%= @recipe.plate.name %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Source:</th>
+      <td><%= @recipe.source %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Location:</th>
+      <td><%= @recipe.location %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Total Minutes:</th>
+      <td><%= @recipe.total_minutes %></td>
+    </tr>
+    <% unless user_signed_in? %>
+      <tr>
+        <th scope='row'>Owner:</th>
+        <td><%= @recipe.user.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_recipe_path(@recipe), class: 'btn btn-success' %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#step_modal" id='add_step'>
+    Add a Step
+  </button>
+
+  <%= link_to 'Back', recipes_path, class: 'btn btn-secondary btn-sm' %>
+<% else %>
+  <%= link_to 'Back', root_path, class: 'btn btn-secondary btn-sm' %>
+<% end %>
+
+<h2>Steps</h2>
+<table class= 'table table-hover table-striped table-sm'>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Expected Minutes</th>
+      <th>Comment</th>
+      <% if user_signed_in? %>
+        <th colspan='3'></th>
+      <% else %>
+        <th colspan='2'></th>
+      <% end %>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <%= render @recipe.steps.order(:id) %>
+  </tbody>
+</table>
+
+<% if user_signed_in? %>
+  <!-- modal from add step -->
+  <div class="modal fade" id="step_modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">Add a Step</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render 'steps/form' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

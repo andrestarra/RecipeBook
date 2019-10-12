@@ -1,0 +1,7 @@
+<div class="w-50 pb-2">
+  <%= simple_form_for @ingredient do |form| %>
+    <%= form.input :name %>
+    <%= form.input :calories, as: :numeric %>
+    <%= form.button :submit, class: 'btn btn-info' %>
+  <% end %>
+</div>

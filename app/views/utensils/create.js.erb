@@ -1,0 +1,9 @@
+<% if @utensil.errors.any? %>
+  $('#modal_utensil').modal('show');
+  alert("ERROR(S): <%= j @utensil.errors.full_messages.join('; ') %>")
+<% else %>
+  $('table#utensils tbody').append('<%= j render @utensil %>');
+  $('#modal_utensil').modal('hide');
+  $('#utensil_name').val("")
+  alert("Utensil created")
+<% end %>

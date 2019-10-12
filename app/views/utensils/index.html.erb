@@ -1,0 +1,17 @@
+<h1 class="float-left">Utensils</h1>
+
+<!-- Button trigger modal -->
+<%= button_modal_utensil("#modal_utensil", "New Utensil", "new_utensil") %>
+
+<table class='table table-hover table-striped table-sm' id="utensils">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan='3'></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @utensils %>
+  </tbody>
+</table>

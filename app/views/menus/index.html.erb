@@ -1,0 +1,27 @@
+<h1>Menus</h1>
+
+<table class='table table-hover table-striped table-sm'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type of Menu</th>
+      <th colspan='3'></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr>
+        <td><%= menu.name %></td>
+        <td><%= menu.type_menu %></td>
+        <td><%= link_to 'Show', menu_path(menu), class: 'btn btn-success btn-sm' %></td>
+        <td><%= link_to 'Edit', edit_menu_path(menu), class: 'btn btn-secondary btn-sm' %></td>
+        <td><%= link_to 'Destroy', menu_path(menu), class: 'btn btn-danger btn-sm',
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New menu', new_menu_path, class: 'btn btn-info' %>

@@ -1,0 +1,17 @@
+<h1>Menu</h1>
+
+<table class='table table-borderless table-hover w-25'>
+  <tbody>
+    <tr>
+      <th scope='row'>Name:</th>
+      <td><%= @menu.name %></td>
+    </tr>
+    <tr>
+      <th scope='row'>Type of Menu:</th>
+      <td><%= @menu.type_menu %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_menu_path(@menu), class: 'btn btn-success' %>
+<%= link_to 'Back', menus_path, class: ' btn btn-secondary btn-sm' %>

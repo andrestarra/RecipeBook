@@ -1,0 +1,4 @@
+<%= simple_form_for @utensil, remote: true do |form| %>
+  <%= form.input :name, id: 'utensil_name' %>
+  <%= form.button :submit, class: 'btn btn-info', id: 'create_utensil' %>
+<% end %>

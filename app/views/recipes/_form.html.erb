@@ -1,0 +1,9 @@
+<div class="w-50 pb-2">
+  <%= simple_form_for @recipe do |form| %>
+    <%= form.input :source %>
+    <%= form.input :location %>
+    <%= form.input :total_minutes %>
+    <%= form.association :plate, collection: Plate.my_dishes %>
+    <%= form.button :submit, class: 'btn btn-info' %>
+  <% end %>
+</div>

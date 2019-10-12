@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RecipeBook</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('https://bit.ly/2vg67X5') %>
+  </head>
+
+  <body>
+    <nav class='navbar navbar-expand-lg navbar-light bg-info'>
+      <%= link_to root_path do %>
+        <%= image_tag('https://bit.ly/2vg67X5', size: '30x30', class: 'd-inline-block align-top') %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+          aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class='collapse navbar-collapse' id='navbarNavAltMarkup'>
+        <div class='navbar-nav'>
+          <%= link_to 'Menus', menus_path, class: 'nav-item nav-link menu' %>
+          <%= link_to 'Plates', plates_path, class: 'nav-item nav-link menu' %>
+          <%= link_to 'Recipes', recipes_path, class: 'nav-item nav-link menu' %>
+          <%= link_to 'Ingredients', ingredients_path, class: 'nav-item nav-link menu' %>
+          <%= link_to 'Utensils', utensils_path, class: 'nav-item nav-link menu' %>
+        </div>
+      </div>
+      <ul class="nav justify-content-end">
+        <%- if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Edit profile ', edit_user_registration_path, class: 'btn btn-primary m-1' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to ' Exit', destroy_user_session_path, method: :delete, class: 'btn btn-danger btn-sm m-1' %>
+          </li>
+        <% else %>
+          <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Log in
+            </button>
+            <div class="dropdown-menu dropdown-menu-right w-50">
+              <div class='container'>
+                <%= render partial: 'devise/sessions/form' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>" role="alert">
+          <%= value %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

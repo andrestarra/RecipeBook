@@ -1,0 +1,11 @@
+<div class="w-50 pb-2">
+  <%= simple_form_for @plate do |form| %>
+    <%= form.input :name %>
+    <%= form.input :main_ingredient %>
+    <%= form.input :type_plate %>
+    <%= form.input :price %>
+    <%= form.input :comment %>
+    <%= form.association :menu, collection: Menu.my_menus, label_method: :menu_and_type%>
+    <%= form.button :submit, class: 'btn btn-info' %>
+  <% end %>
+</div>
